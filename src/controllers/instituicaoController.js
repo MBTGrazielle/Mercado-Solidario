@@ -175,33 +175,35 @@ const atualizarCadastroInstituicao = async (request, response) => {
         Alerta: `Id incorreto. Caracter a menos: ${24 - id.length}.`,
       });
     }
-    const instituicaoEncontrada = await InstituicaoSchema.updateOne({
+    const instituicaoAtualizada = await InstituicaoSchema.find({id})
+    .updateOne({
       nome,
-      cnpj,
-      iniciativa_privada,
-      endereco: {
-        cep,
-        rua,
-        numero,
-        complemento,
-        referencia,
-        estado,
-        cidade,
-        bairro,
-      },
-      site,
-      horario_funcionamento,
-      pessoa_responsavel,
+    cnpj,
+    iniciativa_privada,
+    endereco: {
+      cep,
+      rua,
+      numero,
+      complemento,
+      referencia,
+      estado,
+      cidade,
+      bairro,
+    },
+    site,
+    horario_funcionamento,
+    pessoa_responsavel,
     });
-    const instituicaoAtualizada = await InstituicaoSchema.find({ id });
-    if (instituicaoAtualizada.length == 0) {
+
+    const instituicaoUpdate= await InstituicaoSchema.find({id})
+    if (instituicaoUpdate.length == 0) {
       return response.status(404).json({
         message: `O instituição não foi encontrada.`,
       });
     }
     response.status(200).send({
       message: "Instituição atualizado com sucesso",
-      instituicaoAtualizada,
+      instituicaoUpdate,
     });
   } catch (error) {
     response.status(500).json({

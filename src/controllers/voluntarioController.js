@@ -109,20 +109,24 @@ const atualizarVoluntarioById = async (request, response) => {
         Alerta: `Id incorreto. Caracter a menos: ${24 - id.length}.`,
       });
     }
-    const voluntarioEncontrado = await VoluntarioSchema.updateOne({
+    
+    const voluntarioAtualizado = await VoluntarioSchema.find({id})
+    .updateOne({
       name,
       email,
-      password,
+      password
     });
-    const voluntarioAtualizado = await VoluntarioSchema.find({ id });
-    if (voluntarioAtualizado.length == 0) {
+
+    const voluntarioUpdate= await VoluntarioSchema.find({id})
+
+    if (voluntarioUpdate.length == 0) {
       return response.status(404).json({
         message: `O voluntário não foi encontrado.`,
       });
     }
     response.status(200).send({
       message: "Voluntário atualizado com sucesso",
-      voluntarioAtualizado,
+      voluntarioUpdate,
     });
   } catch (error) {
     response.status(500).json({
