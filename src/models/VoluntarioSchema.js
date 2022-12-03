@@ -9,7 +9,26 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cpf: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  telefone: {
+    type: String,
+    required: true,
+  },
   email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+  },
+  disponibilidade_dia: {
+    type: String,
+    required: true,
+  },
+  disponibilidade_turno: {
     type: String,
     required: true,
   },

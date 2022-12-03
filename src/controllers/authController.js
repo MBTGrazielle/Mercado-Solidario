@@ -11,15 +11,16 @@ const login = (request, response) => {
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
     return response.status(401).send({
-      message: "Email inválido!",
+      Alerta: "Email inválido!",
     });
   }
 
   try {
+    
     UserSchema.findOne({ email: request.body.email }, (error, user) => {
       if (!user) {
         return response.status(404).send({
-          message: "Usuário não encontrado",
+          Prezades: "Usuário não encontrado",
         });
       }
 
@@ -30,17 +31,19 @@ const login = (request, response) => {
 
       if (!validPassword) {
         return response.status(401).send({
-          message: "Senha inválida.",
+          Alerta: "Senha inválida.",
         });
       }
-
+      
       // jwt.sign(nome do usuário, SEGREDO)
       const token = jwt.sign({ name: user.name }, SECRET);
 
       response.status(200).send({
-        message: "Login efetuado com sucesso!",
+        Prezades: "Login efetuado com sucesso!",
+        Status: "┌( ಠ‿ಠ)┘",
         token,
       });
+
     });
   } catch (err) {
     response.status(500).send({
