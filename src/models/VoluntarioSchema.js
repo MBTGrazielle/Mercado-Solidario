@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const voluntarioSchema = new mongoose.Schema({
   id: {
     type: mongoose.Types.ObjectId,
     default: mongoose.Types.ObjectId,
@@ -42,4 +42,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("voluntario", voluntarioSchema);

@@ -36,8 +36,8 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 ## 🎯OBJETIVO:
 
-<p align="justify">🗸 Inibir a ocorrência da insegurança alimentar e nutricional das famílias cadastradas através da disponibilização do acesso permanente de alimentos; <br> 🗸 Inspirar novas ações e estratégias para erradicar a fome;<br> 🗸 Ampliar o número de famílias beneficiadas.</p>
-<br>
+<p align="justify">✘ Inibir a ocorrência da insegurança alimentar e nutricional das famílias cadastradas através da disponibilização do acesso permanente de alimentos; <br> ✘ Inspirar novas ações e estratégias para erradicar a fome;<br> ✘ Ampliar o número de famílias beneficiadas.</p><br>
+
 
 ## RESUMO DO PROJETO:
 
@@ -47,7 +47,7 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 <p align="justify">O Mercado Solidário contará com doações, em produtos, para abastecimento do estoque e será dividido em 4 bancos. O primeiro banco será destinado ao cadastro de voluntários para implementação e manutenção do projeto. O segundo irá cadastrar as famílias beneficiárias à iniciativa, o terceiro as doações e o quarto será o mercado e o seu estoque.</p>
 
-<br><br>
+<br>
 
 Cartão-Alimentação:
 <p align="center"><img src="./assets/cartao-frente.png" alt="grafico-justificativa" width="400" align="center"></img></p>
@@ -67,46 +67,44 @@ Formulário Voluntariado: (inserir front)
 
 ➤ Voluntários<br>
 
-🗸 Cadastramento de voluntários;<br>
-🗸 Listar os cadastros de todos voluntários da API;<br>
-🗸 Listar os voluntários por filtros (disponibilidade_dia e disponibilidade_turno);<br>
-🗸 Buscar o voluntário por Id;<br>
-🗸 Buscar o voluntário por CPF;<br>
-🗸 Login do voluntário;<br>
-🗸 Atualizar o cadastro do voluntário;<br>
-🗸 Deletar o cadastro do voluntário;<br>
+✘ Cadastramento de voluntários;<br>
+✘ Listar os cadastros de todos voluntários da API;<br>
+✘ Listar os voluntários por filtros (disponibilidade_dia e disponibilidade_turno);<br>
+✘ Buscar o voluntário por Id;<br>
+✘ Buscar o voluntário por CPF;<br>
+✘ Login do voluntário;<br>
+✘ Atualizar o cadastro do voluntário;<br>
+✘ Deletar o cadastro do voluntário;<br><br>
 
 ➤ Famílias Beneficiárias<br>
 
-🗸 Cadastrar as famílias;<br>
-🗸 Listar os cadastros de todas as famílias da API;<br>
-🗸 Traçar o perfil socioeconômico e racial<br>
-🗸 Buscar a família por Id;<br>
-🗸 Buscar a família por representante familiar;<br>
-🗸 Buscar a família por número do cartão-alimentação;<br>
-🗸 Atualizar o cadastro da família;<br>
-🗸 Deletar o cadastro da família;
-<br>
+✘ Cadastrar as famílias;<br>
+✘ Listar os cadastros de todas as famílias da API;<br>
+✘ Traçar o perfil socioeconômico<br>
+✘ Buscar a família por representante familiar;<br>
+✘ Buscar a família por número do cartão-alimentação;<br>
+✘ Atualizar o cadastro da família;<br>
+✘ Deletar o cadastro da família;<br><br>
 
 ➤ Doações<br>
 
-🗸 Cadastrar a doação de produtos;<br>
-🗸 Listar as doações por filtros (nome do produto, mês e categoria);<br>
-🗸 Buscar a doação por Id;
-<br>
+✘ Cadastrar a doação de produtos;<br>
+✘ Listar as doações por filtros (nome do produto, mês e categoria);<br>
+✘ Buscar a doação por Id;<br><br>
+
 
 ➤ Mercado<br>
 
-🗸 Listar estoque da API;<br>
-🗸 Compra da família;<br>
-🗸 Listagem dos produtos por filtros (nome do produto/quantidade e categoria);<br>
-🗸 Atualizar o cadastro do produto;<br>
-🗸 Deletar o produto;<br>
+✘ Listar estoque da API;<br>
+✘ Compra da família;<br>
+✘ Listagem dos produtos por filtros (nome do produto/quantidade e categoria);<br>
+✘ Atualizar o cadastro do produto;<br>
+✘ Deletar o produto;<br>
 <br>
 
 ## 💻MÉTODOS:
-<p align="justify">API desenvolvida utilizando JavaScript e Node.js. Possui CRUD e utiliza a conexão com bando de dados MongoDB e as rotas foram testes no Insominia.</p>
-<br>
+<p align="justify">API desenvolvida utilizando JavaScript e Node.js. Possui CRUD e utiliza a conexão com bando de dados MongoDB e as rotas foram testes no Insominia.</p><br>
+
 
 ## 📂 ARQUITETURA MVC
 ```
@@ -141,7 +139,7 @@ Formulário Voluntariado: (inserir front)
 |- 📑 README.md
 |- 📑 server.js
 ```
-<br><br>
+<br>
 
 ## TECNOLOGIAS E PACOTES UTILIZADOS:
 
@@ -156,6 +154,8 @@ Formulário Voluntariado: (inserir front)
 - [Insominia](https://insomnia.rest/)
 - [VScode](https://code.visualstudio.com/)  
 - [Canva](https://www.canva.com/)
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 
 ### PACOTES
 
@@ -165,14 +165,20 @@ Formulário Voluntariado: (inserir front)
 - [Express](https://expressjs.com/pt-br/)
 - [Mongoose](https://mongoosejs.com/)
 - [Nodemon](https://www.npmjs.com/package/nodemon)
-- [bcrypt](https://www.npmjs.com/package/bcrypt)
-- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-- [jest](https://www.npmjs.com/package/jest)
-- [supertest](https://www.npmjs.com/package/supertest)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+- [Jest](https://www.npmjs.com/package/jest)
+- [Supertest](https://www.npmjs.com/package/supertest)
+
+<br>
+
+# ROTAS
 
 <br><br>
 
-# ROTAS
+## 🏗️ IMPLEMENTAÇÕES FUTURAS:
+<input type="checkbox"></input>
+Desenvolver um front-end;
 <br><br>
 
 ## CONHEÇA UM POUCO SOBRE MIM:
@@ -180,7 +186,8 @@ Formulário Voluntariado: (inserir front)
 
 |||
 |:------:|----|
-| <img src='./assets/fotoGrazi.png' width =1000> | Me chamo . |
+| <img src='./assets/fotoGrazi.png' width =5000> | <p align="justify">Meu nome é Grazielle Torres, sou casada, mãe de 2 pets (Lupita&#128054; e Maria&#128049;), nordestina, baiana, negra, desenvolvedora Back-end e enfermeira sanitarista (gestão). Estou em transição de carreira para tecnologia e me descobri programadora em 08/2022 através de minha irmã e da <a href="https://www.reprograma.com.br/back-end-todasemtech.html">{reprograma}</a> e desde então tenho aprendido novas habilidades e conhecimentos. O meu objetivo é crescer na área, afinal de contas tenho investido todas as fichas😄, e também multiplicar e inspirar novas pessoas, principalmente mulheres. Por ter trabalhado em gestão em toda a minha trajetória profissional possuo um perfil de liderança, mediação de conflitos, organização, planejamento e ensino. Vejo que essas habilidades adquiridas ao longo da minha vida em diferentes áreas me fez ser altamente adaptável, flexível e pronta pra desafios. Me descobri uma mulher feliz na tecnologia e isso me impulsiona a cada dia ser melhor do que já fui e sou.<h5><i></p> <p align= "right">Expandir os horizontes faz parte e é necessário ao processo da vida e ao amadurecimento. Vigio-me para possuir uma visão ampla que me possibilidade a contemplação dos vários ângulos existentes e permito-me também experimentar o novo. Tenho comigo que preciso sair da minha zona de conforto para oportunizar o crescimento e mudança de vida pessoal e das pessoas e coisas ao meu redor!</p></i> <br><p align="justify"> 𝐏𝐚𝐥𝐚𝐯𝐫𝐚𝐬-𝐜𝐡𝐚𝐯𝐞: Comunicação, Gestão, Inovação, tecnologia, Planejamento estratégico, trabalho em equipe, empatia, JSON, Git, Github, Banco de dados, BD , MongoDB, CRUD, Node.js, JavaScript, Js, Automação de testes, JWT, Bcrypt, HTML, CSS, API.
+</p> </h5> |
 
 ## CONTATO:
 <br>

@@ -10,7 +10,7 @@ const login = (request, response) => {
   //verifica se o email é válido
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
-    return response.status(401).send({
+    return response.status(400).send({
       Alerta: "Email inválido!",
     });
   }

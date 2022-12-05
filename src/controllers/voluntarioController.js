@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const VoluntarioSchema = require("../models/VoluntarioSchema");
 const bcrypt = require("bcrypt");
 
-const criarVoluntario = async (request, response) => {
+const cadastrarVoluntario = async (request, response) => {
   const { name, cpf,telefone, email,disponibilidade_dia, disponibilidade_turno } = request.body;
 
   const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
@@ -160,7 +160,7 @@ const buscarVoluntarioById = async (request, response) => {
   try {
     const voluntario = await VoluntarioSchema.find({ id });
 
-    //Deve retornar(404) caso o id voluntário não exista no banco de dados.
+    //Deve retornar(404) caso o id do voluntário não exista no banco de dados.
 
     if (voluntario.length == 0) {
       return response
@@ -171,7 +171,7 @@ const buscarVoluntarioById = async (request, response) => {
         });
     }
 
-    //Deve retornar(200) caso o id voluntário exista no banco de dados.
+    //Deve retornar(200) caso o id do voluntário exista no banco de dados.
 
     response.status(200).json({
       Prezades: `Segue o voluntário para este id [${id}]:`,
@@ -185,10 +185,56 @@ const buscarVoluntarioById = async (request, response) => {
   }
 };
 
+const buscarVoluntarioByCPF = async (request, response) => {
+  const { cpf } = request.params;
+
+  //Deve retornar(400) caso o cpf não possua 11 caracteres.
+
+  if (cpf.length > 11) {
+    return response.status(400).json({
+      Alerta: `Id incorreto. Caracter a mais: ${cpf.length - 11}.`,
+      Status: "┌(ಠ_ಠ)┐",
+    });
+  }
+  if (cpf.length < 11) {
+    return response.status(400).json({
+      Alerta: `Id incorreto. Caracter a menos: ${11 - cpf.length}.`,
+      Status: "┌(ಠ_ಠ)┐",
+    });
+  }
+
+  try {
+    const voluntarioByCPF = await VoluntarioSchema.find({ cpf });
+
+    //Deve retornar(404) caso o cpf do voluntário não exista no banco de dados.
+
+    if (voluntarioByCPF.length == 0) {
+      return response
+        .status(404)
+        .json({
+          Prezades: `O voluntário não foi encontrado.`,
+          Status: "┌(ಠ_ಠ)┐",
+        });
+    }
+
+    //Deve retornar(200) caso o cpf do voluntário exista no banco de dados.
+
+    response.status(200).json({
+      Prezades: `Segue o voluntário para este cpf [${cpf}]:`,
+      Status: "┌( ಠ‿ಠ)┘",
+      voluntarioByCPF,
+    });
+  } catch (error) {
+    response.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 const atualizarVoluntarioById = async (request, response) => {
   const { id } = request.params;
-  const { name, telefone,password,disponibilidade_dia, disponibilidade_turno } = request.body;
-
+  const { name, telefone,disponibilidade_dia, disponibilidade_turno,password } = request.body;
+  
   //Deve retornar mensagem de erro(400) caso o Id não possua 24 caracteres.
 
   if (id.length > 24) {
@@ -204,15 +250,6 @@ const atualizarVoluntarioById = async (request, response) => {
     });
   }
 
-  // Deve retornar mensagem de erro(400) ao inserir tipo de dado incorreto;
-  // e caso não respeite o preenchimento obrigatório.
-
-  if (typeof name !== "string" || name.trim() === "") {
-    return response.status(400).send({
-      Alerta: `A string nome é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }
 
   //Deve retornar mensagem de erro(400) ao atualizar o CPF e/ou e-mail.
 
@@ -224,12 +261,13 @@ const atualizarVoluntarioById = async (request, response) => {
   }
 
   try {
+    
     const voluntarioAtualizado = await VoluntarioSchema.find({ id }).updateOne({
       name,
       telefone,
       disponibilidade_dia, 
       disponibilidade_turno,
-      password,
+      password
     });
 
     const cadastroAtualizado = await VoluntarioSchema.find({ id });
@@ -248,7 +286,7 @@ const atualizarVoluntarioById = async (request, response) => {
     response.status(200).send({
       Prezades: "Voluntário atualizado com sucesso",
       Status: "┌( ಠ‿ಠ)┘",
-      cadastroAtualizado,
+     cadastroAtualizado,
     });
   } catch (error) {
     response.status(500).json({
@@ -297,9 +335,12 @@ const deletarVoluntarioById = async (request, response) => {
 };
 
 module.exports = {
-  criarVoluntario,
+  cadastrarVoluntario,
   buscarAllVoluntario,
   buscarVoluntarioById,
+  buscarVoluntarioByCPF,
   atualizarVoluntarioById,
   deletarVoluntarioById,
 };
+
+//falta hashear o password quando atualizar a senha

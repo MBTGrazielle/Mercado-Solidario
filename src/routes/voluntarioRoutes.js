@@ -7,10 +7,11 @@ const userController = require("../controllers/voluntarioController");
 const { checkAuth } = require("../middlewares/auth");
 
 router.get("/all", checkAuth, userController.buscarAllVoluntario);
-router.get("/:id", checkAuth, userController.buscarVoluntarioById);
-router.post("/create", userController.criarVoluntario);
+router.get("/buscarId/:id", checkAuth, userController.buscarVoluntarioById);
+router.get("/buscarCpf/:cpf", checkAuth, userController.buscarVoluntarioByCPF);
+router.post("/criar", userController.cadastrarVoluntario);
 router.post("/login", authController.login);
-router.patch("/update/:id", checkAuth, userController.atualizarVoluntarioById);
-router.delete("/delete/:id", checkAuth, userController.deletarVoluntarioById);
+router.patch("/atualizar/:id", checkAuth, userController.atualizarVoluntarioById);
+router.delete("/deletar/:id", checkAuth, userController.deletarVoluntarioById);
 
 module.exports = router;
