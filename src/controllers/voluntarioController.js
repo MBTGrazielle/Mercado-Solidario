@@ -1,45 +1,26 @@
 const mongoose = require("mongoose");
 const VoluntarioSchema = require("../models/VoluntarioSchema");
 const bcrypt = require("bcrypt");
+const validarItens = require("../utils/servico");
 
 const cadastrarVoluntario = async (request, response) => {
   const { name, cpf,telefone, email,disponibilidade_dia, disponibilidade_turno } = request.body;
 
+  //Deve retornar(400) ao cadastrar turno noturno
+if(validarItens.naoPermiteTurnoNoturno(request.body)){
+  return response.status(400).json({
+    message: validarItens.naoPermiteTurnoNoturno(request.body),
+  });
+}
   const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
   request.body.password = senhaHasheada;
 
   //Deve retornar(400) ao inserir tipo de dado incorreto;
   //e caso não respeite o preenchimento obrigatório.
 
-  if (typeof name !== "string" || name.trim() === "") {
-    return response.status(400).send({
-      Alerta: `A string nome é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  } else if (typeof cpf !== "string" || cpf.trim() === "") {
-    return response.status(400).send({
-      Alerta: `A string do CPF é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  } else if (typeof email !== "string" || email.trim() === "") {
-    return response.status(400).send({
-      Alerta: `A string do email é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }else if(typeof telefone !== "string" || telefone.trim() === ""){
-    return response.status(400).send({
-      Alerta: `A string do telefone é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }else if(typeof disponibilidade_dia	 !== "string" || disponibilidade_dia.trim() === ""){
-    return response.status(400).send({
-      Alerta: `A string da disponibilidade do dia é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }else if(typeof disponibilidade_turno	 !== "string" || disponibilidade_turno.trim() === ""){
-    return response.status(400).send({
-      Alerta: `A string da disponibilidade do turno é obrigatória.`,
-      Status: "┌(ಠ_ಠ)┐",
+  if(validarItens.validaTipoEObrigatoriedadeVoluntario(request.body)){
+    return response.status(400).json({
+      message: validarItens.validaTipoEObrigatoriedadeVoluntario(request.body),
     });
   }
 
@@ -50,8 +31,7 @@ const cadastrarVoluntario = async (request, response) => {
   });
   if (emailExiste) {
     return response.status(409).send({
-      Alerta: "Este endereço de email já está em uso. Tente outro.",
-      Status: "┌(ಠ_ಠ)┐",
+      Alerta: "Este endereço de email já está em uso. Tente outro."
     });
   }
 
@@ -62,17 +42,15 @@ const cadastrarVoluntario = async (request, response) => {
   });
   if (cpfExiste) {
     return response.status(409).send({
-      Alerta: "Este CPF já está cadastrado.",
-      Status: "┌(ಠ_ಠ)┐",
+      Alerta: "Este CPF já está cadastrado."
     });
   }
 
   //Deve retornar(400) caso o CPF não possua 11 caracteres.
 
-  if (cpf.length < 11 || cpf.length > 11) {
-    return response.status(400).send({
-      Alerta: "Digite um CPF válido.",
-      Status: "┌(ಠ_ಠ)┐",
+  if(validarItens.validaCpfVoluntario(request.body)){
+    return response.status(400).json({
+      message: validarItens.validaCpfVoluntario(request.body),
     });
   }
 
@@ -81,8 +59,7 @@ const cadastrarVoluntario = async (request, response) => {
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
     return response.status(400).send({
-      Alerta: "Email inválido!",
-      Status: "┌(ಠ_ಠ)┐",
+      Alerta: "Email inválido!"
     });
   }
 
@@ -90,12 +67,21 @@ const cadastrarVoluntario = async (request, response) => {
     const novoUsuario = new VoluntarioSchema(request.body);
     const salvarUsuario = await novoUsuario.save();
 
+    const usuario={
+    id:salvarUsuario.id,
+    nome:salvarUsuario.name ,
+		cpf:salvarUsuario.cpf ,
+		telefone:salvarUsuario.telefone,
+		email:salvarUsuario.email,
+		disponibilidade_dia:salvarUsuario.disponibilidade_dia,
+		disponibilidade_turno:salvarUsuario.disponibilidade_turno,
+    }
+
     //Deve retornar(201) quando criar o usuário.
 
     response.status(201).send({
       Bem_vindes: "Parabéns por sua iniciativa! O seu usuário foi cadastrado!",
-      Status: "┌( ಠ‿ಠ)┘",
-      Cadastro: salvarUsuario,
+      Cadastro: usuario,
     });
   } catch (err) {
     response.status(500).send({
@@ -106,30 +92,20 @@ const cadastrarVoluntario = async (request, response) => {
 
 const buscarAllVoluntario = async (request, response) => {
   try {
-    const voluntario = await VoluntarioSchema.find();
-
+    const voluntarios = await VoluntarioSchema.find();
+   
     //Deve retornar(200) caso encontre os voluntários.
 
-    if (voluntario.length > 1) {
+    if (voluntarios.length > 0) {
       return response.status(200).json({
-        Prezades: `Encontramos ${voluntario.length} voluntários.`,
-        Status: "┌( ಠ‿ಠ)┘",
-        Lista_voluntarios: voluntario,
-      });
-
-      //Deve retornar(200) caso encontre o voluntário.
-    } else if (voluntario.length == 1) {
-      return response.status(200).json({
-        Prezades: `Encontramos ${voluntario.length} voluntário.`,
-        Status: "┌( ಠ‿ಠ)┘",
-        Lista_voluntarios: voluntario,
+        Prezades: `Encontramos ${voluntarios.length} voluntário${voluntarios.length === 1? "": "s"}.`,
+        voluntarios,
       });
 
       //Deve retornar(404) caso não exista voluntário cadastrado.
     } else {
       return response.status(404).json({
-        Prezades: `Nenhum voluntário foi cadastrado até o momento.`,
-        Status: "┌(ಠ_ಠ)┐",
+        Prezades: `Nenhum voluntário foi cadastrado até o momento.`
       });
     }
   } catch (error) {
@@ -144,16 +120,9 @@ const buscarVoluntarioById = async (request, response) => {
 
   //Deve retornar(400) caso o Id não possua 24 caracteres.
 
-  if (id.length > 24) {
+  if(validarItens.validaId(request.params)){
     return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a mais: ${id.length - 24}.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }
-  if (id.length < 24) {
-    return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a menos: ${24 - id.length}.`,
-      Status: "┌(ಠ_ಠ)┐",
+      message: validarItens.validaId(request.params),
     });
   }
 
@@ -166,8 +135,7 @@ const buscarVoluntarioById = async (request, response) => {
       return response
         .status(404)
         .json({
-          Prezades: `O voluntário não foi encontrado.`,
-          Status: "┌(ಠ_ಠ)┐",
+          Prezades: `O voluntário não foi encontrado.`
         });
     }
 
@@ -175,7 +143,6 @@ const buscarVoluntarioById = async (request, response) => {
 
     response.status(200).json({
       Prezades: `Segue o voluntário para este id [${id}]:`,
-      Status: "┌( ಠ‿ಠ)┘",
       voluntario,
     });
   } catch (error) {
@@ -190,16 +157,9 @@ const buscarVoluntarioByCPF = async (request, response) => {
 
   //Deve retornar(400) caso o cpf não possua 11 caracteres.
 
-  if (cpf.length > 11) {
+  if(validarItens.validaCpfVoluntario(request.params)){
     return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a mais: ${cpf.length - 11}.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }
-  if (cpf.length < 11) {
-    return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a menos: ${11 - cpf.length}.`,
-      Status: "┌(ಠ_ಠ)┐",
+      message: validarItens.validaCpfVoluntario(request.params),
     });
   }
 
@@ -212,8 +172,7 @@ const buscarVoluntarioByCPF = async (request, response) => {
       return response
         .status(404)
         .json({
-          Prezades: `O voluntário não foi encontrado.`,
-          Status: "┌(ಠ_ಠ)┐",
+          Prezades: `O voluntário não foi encontrado.`
         });
     }
 
@@ -221,7 +180,6 @@ const buscarVoluntarioByCPF = async (request, response) => {
 
     response.status(200).json({
       Prezades: `Segue o voluntário para este cpf [${cpf}]:`,
-      Status: "┌( ಠ‿ಠ)┘",
       voluntarioByCPF,
     });
   } catch (error) {
@@ -231,32 +189,50 @@ const buscarVoluntarioByCPF = async (request, response) => {
   }
 };
 
+const filtrarVoluntarioDisponibilidade= async(request,response)=>{
+const {disponibilidade_dia, disponibilidade_turno}=request.body
+
+//Deve retornar(400) caso não preencha disponibilidade dia e turno
+if(validarItens.validaPreenchimentoDisponibilidade(request.body)){
+  return response.status(400).json({
+    message: validarItens.validaPreenchimentoDisponibilidade(request.body),
+  });
+}
+
+try {
+  const filtroDia= await VoluntarioSchema.find({disponibilidade_dia})
+  const filtroTurno= await VoluntarioSchema.find({disponibilidade_turno})
+
+response.status(200).send({
+  Prezades:`Segue a lista de voluntários por dia e turno:`,
+  VoluntarioByDia:filtroDia,
+  VoluntarioByTurno:filtroTurno
+})
+} catch (error) {
+  response.status(500).json({
+    message: error.message,
+  });
+}
+}
+
 const atualizarVoluntarioById = async (request, response) => {
   const { id } = request.params;
   const { name, telefone,disponibilidade_dia, disponibilidade_turno,password } = request.body;
-  
+  const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
+ 
   //Deve retornar mensagem de erro(400) caso o Id não possua 24 caracteres.
 
-  if (id.length > 24) {
+  if(validarItens.validaId(request.params)){
     return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a mais: ${id.length - 24}.`,
-      Status: "┌(ಠ_ಠ)┐",
+      message: validarItens.validaId(request.params),
     });
   }
-  if (id.length < 24) {
-    return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a menos: ${24 - id.length}.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }
-
 
   //Deve retornar mensagem de erro(400) ao atualizar o CPF e/ou e-mail.
 
-  if (request.body.cpf || request.body.email) {
-    return response.status(400).send({
-      Alerta: `Não é possivel atualizar o CPF e/ou e-mail.`,
-      Status: "┌(ಠ_ಠ)┐",
+  if(validarItens.validaPreenchimentoCpfEmail(request.body)){
+    return response.status(400).json({
+      message: validarItens.validaPreenchimentoCpfEmail(request.body),
     });
   }
 
@@ -267,17 +243,21 @@ const atualizarVoluntarioById = async (request, response) => {
       telefone,
       disponibilidade_dia, 
       disponibilidade_turno,
-      password
+      password: senhaHasheada
     });
 
     const cadastroAtualizado = await VoluntarioSchema.find({ id });
-
+const usuario={
+    nome:cadastroAtualizado[0].name ,
+		telefone:cadastroAtualizado[0].telefone,
+		disponibilidade_dia:cadastroAtualizado[0].disponibilidade_dia,
+		disponibilidade_turno:cadastroAtualizado[0].disponibilidade_turno,
+}
     //Deve retornar mensagem de erro(404) caso o id voluntário não exista no banco de dados.
 
     if (cadastroAtualizado.length == 0) {
       return response.status(404).json({
-        Prezades: `O voluntário não foi encontrado.`,
-        Status: "┌(ಠ_ಠ)┐",
+        Prezades: `O voluntário não foi encontrado.`
       });
     }
 
@@ -285,8 +265,7 @@ const atualizarVoluntarioById = async (request, response) => {
 
     response.status(200).send({
       Prezades: "Voluntário atualizado com sucesso",
-      Status: "┌( ಠ‿ಠ)┘",
-     cadastroAtualizado,
+     usuario,
     });
   } catch (error) {
     response.status(500).json({
@@ -299,19 +278,12 @@ const deletarVoluntarioById = async (request, response) => {
   const { id } = request.params;
 
   //Deve retornar(400) caso o Id não possua 24 caracteres.
+  if(validarItens.validaId(request.params)){
+    return response.status(400).json({
+      message: validarItens.validaId(request.params),
+    });
+  }
 
-  if (id.length > 24) {
-    return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a mais: ${id.length - 24}.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }
-  if (id.length < 24) {
-    return response.status(400).json({
-      Alerta: `Id incorreto. Caracter a menos: ${24 - id.length}.`,
-      Status: "┌(ಠ_ಠ)┐",
-    });
-  }
   try {
     const voluntarioEncontrado = await VoluntarioSchema.deleteOne({ id });
 
@@ -323,8 +295,7 @@ const deletarVoluntarioById = async (request, response) => {
       //Deve retornar(404) caso não encontre o id do voluntário.
 
       return response.status(404).send({
-        Prezades: "O voluntário não foi encontrado.",
-        Status: "┌(ಠ_ಠ)┐",
+        Prezades: "O voluntário não foi encontrado."
       });
     }
   } catch (error) {
@@ -339,8 +310,8 @@ module.exports = {
   buscarAllVoluntario,
   buscarVoluntarioById,
   buscarVoluntarioByCPF,
+  filtrarVoluntarioDisponibilidade,
   atualizarVoluntarioById,
   deletarVoluntarioById,
 };
 
-//falta hashear o password quando atualizar a senha

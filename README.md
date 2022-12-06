@@ -89,17 +89,14 @@ Formulário Voluntariado: (inserir front)
 ➤ Doações<br>
 
 ✘ Cadastrar a doação de produtos;<br>
-✘ Listar as doações por filtros (nome do produto, mês e categoria);<br>
+✘ Listar o cadastro de todas as doações<br>
 ✘ Buscar a doação por Id;<br><br>
 
 
 ➤ Mercado<br>
 
 ✘ Listar estoque da API;<br>
-✘ Compra da família;<br>
-✘ Listagem dos produtos por filtros (nome do produto/quantidade e categoria);<br>
-✘ Atualizar o cadastro do produto;<br>
-✘ Deletar o produto;<br>
+✘ Listagem dos produtos por filtros (nome do produto/quantidade e categoria/quantidade);<br>
 <br>
 
 ## 💻MÉTODOS:
@@ -173,16 +170,53 @@ Formulário Voluntariado: (inserir front)
 <br>
 
 # ROTAS
+➤ Voluntários<br>
+| <p align="center">Método HTTP </p>  |<p align="center"> Endpoint    </p>    | <p align="center">Descrição  </p>    |
+| ------------------------ | ---------------------------- | ------------------------------------------ |
+| <p align="center">GET </p>         | <p align="center">`/voluntario/all`   </p>      | <p align="center">Listar os voluntários cadastrados  </p>          |
+| <p align="center">GET  </p>        |<p align="center"> `/voluntario/buscarId/:id`</p>         | <p align="center">Buscar o voluntário através do ID</p>          |
+| <p align="center">GET  </p>        | <p align="center">`/voluntario/buscarCpf/:cpf`</p>         | <p align="center">Buscar o voluntário através do CPF</p>          |
+| <p align="center">GET  </p>      | <p align="center">`/voluntario/filtroDisponibilidade`</p>     | <p align="center">Filtrar a disponibilidade do voluntário </p>  |
+| <p align="center">POST  </p>        |<p align="center"> `/voluntario/criar` </p>    | <p align="center">Criar o cadastro do voluntário</p> |
+| <p align="center">POST  </p>     |<p align="center"> `/voluntario/login`  </p>       | <p align="center">Login do voluntário</p>     
+| <p align="center">PATCH  </p>     |<p align="center"> `/voluntario/atualizar/:id` </p>        | <p align="center">Atualizar o cadastro do voluntário através do ID</p>
+| <p align="center">DELETE  </p>     |<p align="center"> `/voluntario/deletar/:id` </p>        | <p align="center">Deletar o cadastro do voluntário através do ID </p>
+<br>
 
+➤ Famílias<br>
+| <p align="center">Método HTTP </p>  |<p align="center"> Endpoint    </p>    | <p align="center">Descrição  </p>    |
+| ------------------------ | ---------------------------- | ------------------------------------------ |
+| <p align="center">GET </p>         | <p align="center">`/familia/all`   </p>      | <p align="center">Listar as famílias cadastradas  </p>          |
+| <p align="center">GET  </p>        |<p align="center"> `/familia/buscarResponsavel/:name_do_responsavel_familiar`</p>         | <p align="center">Buscar a família através do nome do responsável familiar </p>          |
+| <p align="center">GET  </p>        | <p align="center">`/familia/buscarCartao/:numero_cartao_alimentacao`</p>         | <p align="center">Buscar a família através do cartão alimentação</p>          |
+| <p align="center">GET  </p>      | <p align="center">`/familia/perfil`</p>     | <p align="center">Traçar o perfil socioeconômico das famílias </p>  |
+| <p align="center">POST  </p>        |<p align="center"> `/familia/criar` </p>    | <p align="center">Criar o cadastro da família</p> |
+| <p align="center">PATCH </p>     |<p align="center"> `/familia/atualizar/:numero_cartao_alimentacao`  </p>       | <p align="center">Atualizar o cadastro da família através do cartão alimentação</p>     
+| <p align="center">DELETE  </p>     |<p align="center"> `/familia/deletar/:numero_cartao_alimentacao` </p>        | <p align="center">Deletar o cadastro da família através do cartão alimentação</p>
+<br>
+
+➤ Doações<br>
+| <p align="center">Método HTTP </p>  |<p align="center"> Endpoint    </p>    | <p align="center">Descrição  </p>    |
+| ------------------------ | ---------------------------- | ------------------------------------------ |
+| <p align="center">GET </p>         | <p align="center">`/doacao/all`   </p>      | <p align="center">Listar as doações cadastradas  </p>          |
+| <p align="center">GET  </p>        |<p align="center"> `/doacao/buscar/:id`</p>         | <p align="center">Buscar a doação através do ID </p>          |
+| <p align="center">POST  </p>        | <p align="center">`/doacao/criar`</p>         | <p align="center">Criar o cadastro da família</p>          |
+<br>
+
+➤ Mercado<br>
+| <p align="center">Método HTTP </p>  |<p align="center"> Endpoint    </p>    | <p align="center">Descrição  </p>    |
+| ------------------------ | ---------------------------- | ------------------------------------------ |
+| <p align="center">GET </p>         | <p align="center">`/mercado/all`   </p>      | <p align="center">Listar o estoque do mercado  </p>          |
+| <p align="center">GET  </p>        |<p align="center"> `/mercado/filtroByNome`</p>         | <p align="center">Buscar o produto através do nome </p>          |
+| <p align="center">POST  </p>        | <p align="center">`/mercado/filtroByCategoria`</p>         | <p align="center">Buscar o produto através da categoria</p>
 <br><br>
 
 ## 🏗️ IMPLEMENTAÇÕES FUTURAS:
 <input type="checkbox"></input>
-Desenvolver um front-end;
+Integrar Front-end e Back-end;
 <br><br>
 
 ## CONHEÇA UM POUCO SOBRE MIM:
-
 
 |||
 |:------:|----|

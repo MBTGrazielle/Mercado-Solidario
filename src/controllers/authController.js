@@ -40,7 +40,6 @@ const login = (request, response) => {
 
       response.status(200).send({
         Prezades: "Login efetuado com sucesso!",
-        Status: "┌( ಠ‿ಠ)┘",
         token,
       });
 

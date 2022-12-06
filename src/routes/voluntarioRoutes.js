@@ -9,6 +9,7 @@ const { checkAuth } = require("../middlewares/auth");
 router.get("/all", checkAuth, userController.buscarAllVoluntario);
 router.get("/buscarId/:id", checkAuth, userController.buscarVoluntarioById);
 router.get("/buscarCpf/:cpf", checkAuth, userController.buscarVoluntarioByCPF);
+router.get("/filtroDisponibilidade",userController.filtrarVoluntarioDisponibilidade)
 router.post("/criar", userController.cadastrarVoluntario);
 router.post("/login", authController.login);
 router.patch("/atualizar/:id", checkAuth, userController.atualizarVoluntarioById);
