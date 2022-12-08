@@ -13,6 +13,6 @@ router.get("/filtroDisponibilidade",userController.filtrarVoluntarioDisponibilid
 router.post("/criar", userController.cadastrarVoluntario);
 router.post("/login", authController.login);
 router.patch("/atualizar/:id", checkAuth, userController.atualizarVoluntarioById);
-router.delete("/deletar/:id", checkAuth, userController.deletarVoluntarioById);
+router.delete("/deletar/", checkAuth, userController.deletarVoluntario);
 
 module.exports = router;

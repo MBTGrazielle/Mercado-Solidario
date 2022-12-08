@@ -1,15 +1,15 @@
 const app = require("../app")
 const request = require("supertest")
-const model = require("../models/PacienteSchema")
+const model = require("../models/VoluntarioSchema")
 const jwt = require('jsonwebtoken');
 const SECRET= process.env.SECRET
 
-describe('Paciente Controller', () => {
+describe('Voluntario Controller', () => {
 
   const token="bearer "+jwt.sign({ name:"grazielle" }, SECRET)
   
-  const pacienteMock = {
-    nome:" Gre ",
+  const voluntarioMock = {
+nome:" Gre ",
 telefone:" 1234 ",
 endereco:" teste ",
 plano_saude:" Unimed ",

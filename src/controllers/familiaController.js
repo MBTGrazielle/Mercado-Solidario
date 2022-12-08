@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const FamiliaSchema = require("../models/FamiliaSchema");
-const bcrypt = require("bcrypt");
 const validarItens = require("../utils/servico");
 
 const cadastrarFamilia = async (request, response) => {
@@ -14,6 +13,14 @@ const cadastrarFamilia = async (request, response) => {
     endereco,
     telefone,
   } = request.body;
+
+  //Deve retornar(400) se a renda familiar per capita for superior a 1.5 salário mínimo
+  const rendaPerCapita=(renda_familiar/numero_integrantes_familia)
+  if(validarItens.validarRendaFamiliarPerCapita(rendaPerCapita)){
+    return response.status(401).json({
+      message: validarItens.validarRendaFamiliarPerCapita(rendaPerCapita),
+    });
+  }
 
   //Deve retornar(400) ao inserir tipo de dado incorreto;
   //e caso não respeite o preenchimento obrigatório.
@@ -83,17 +90,19 @@ const buscarAllFamilia = async (request, response) => {
   }
 };
 
-const perfilSocioEconomico = async (request, response) => {
+const perfilEconomico = async (request, response) => {
   try{
     const familias = await FamiliaSchema.find();
     let mediaRendaFamiliar = 0
+    let mediaNumeroPessoas=0
     let qtdFamilias = familias.length
 
     familias.forEach((a)=>{
+      mediaNumeroPessoas += a.numero_integrantes_familia
       mediaRendaFamiliar += a.renda_familiar/qtdFamilias
     })
  
-    response.status(200).json({media_Renda_Familiar: mediaRendaFamiliar.toFixed(0)+` salários.`})
+    response.status(200).json({Media_Renda_Familiar: `R$ ${mediaRendaFamiliar.toFixed(0)}`,Total_Pessoas_Cadastradas:mediaNumeroPessoas})
   } catch (error) {
     response.status(500).json({
       message: error.message,
@@ -265,7 +274,7 @@ const deletarVoluntarioByCartao = async (request, response) => {
 module.exports = {
   cadastrarFamilia,
   buscarAllFamilia,
-  perfilSocioEconomico,
+  perfilEconomico,
   buscarFamiliaByNameResponsavelFamiliar,
   buscarFamiliaByCartao,
   atualizarFamiliaByCartao,

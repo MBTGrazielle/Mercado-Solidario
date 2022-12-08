@@ -98,11 +98,17 @@ function validaPreenchimentoDisponibilidade(body){
         return  `O preenchimento da disponbilidade de dia e turno é obrigatório`
 }}
 
-function validaPreenchimentoCpfEmail(body){
-    if (body.cpf || body.email) {
-        return  `Não é possivel atualizar o CPF e/ou e-mail.`
+function validaPreenchimentoCpf(body){
+    if (body.cpf) {
+        return  `Não é possivel atualizar o CPF.`
       }
 }
+
+function validarRendaFamiliarPerCapita(rendaPerCapita){
+  if(rendaPerCapita>1818){
+    return `Erro ao cadastrar: Renda familiar per capita superior a 1,5 salário mínimo.`
+    }
+  }
 
 
 
@@ -117,5 +123,6 @@ module.exports = {
     validaCartaoAlimentacao,
     validaId,
     validaPreenchimentoDisponibilidade,
-    validaPreenchimentoCpfEmail
+    validaPreenchimentoCpf,
+    validarRendaFamiliarPerCapita
 }

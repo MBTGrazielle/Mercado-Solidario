@@ -41,11 +41,11 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 ## RESUMO DO PROJETO:
 
-<p align="justify">O mercado solidário foi criado para ajudar as famílias que estão vivenciando situação de insegurança alimentar e nutricional, sendo a sua estrutura similar ao mercado convencional. Nesta iniciativa, a família poderá comprar produtos de acordo à sua escolha e necessidade, a partir da utilização de cartão-alimentação com valor máximo de 130 pontos mensais.</p>
+<p align="justify">O mercado solidário foi criado para ajudar as famílias que estão vivenciando situação de insegurança alimentar e nutricional, sendo a sua estrutura similar ao mercado convencional. Nesta iniciativa, a família poderá comprar produtos de acordo à sua escolha e necessidade, a partir da utilização de cartão-alimentação com valor máximo de 110 pontos mensais.</p>
 
 <p align="justify">Os produtos terão pontuações simbólicas e por isso possibilitará a compra equivalente ao dobro de produtos de uma cesta básica. Além do cartão-alimentação, a iniciativa buscará apoio do Centro de Referência de Assistência Social (CRAS), do respectivo município do mercado, para direcionar e ofertar serviços da Assistência Social no SUAS (Sistema Único de Assistência Social) enviando os cadastros das famílias.</p> 
 
-<p align="justify">O Mercado Solidário contará com doações, em produtos, para abastecimento do estoque e será dividido em 4 bancos. O primeiro banco será destinado ao cadastro de voluntários para implementação e manutenção do projeto. O segundo irá cadastrar as famílias beneficiárias à iniciativa, o terceiro as doações e o quarto será o mercado e o seu estoque.</p>
+<p align="justify">O Mercado Solidário contará com doações, em produtos, para abastecimento do estoque e será dividido em 4 bancos. O primeiro banco será destinado ao cadastro de voluntários para implementação e manutenção do projeto. O segundo irá cadastrar as famílias beneficiárias à iniciativa, sendo a renda familiar per capita de até 1,5 salário mínimo, o terceiro as doações e o quarto será o mercado e o seu estoque.</p>
 
 <br>
 
@@ -195,16 +195,16 @@ Formulário Voluntariado: (inserir front)
 | <p align="center">POST  </p>        |<p align="center"> `/voluntario/criar` </p>    | <p align="center">Criar o cadastro do voluntário</p> |
 | <p align="center">POST  </p>     |<p align="center"> `/voluntario/login`  </p>       | <p align="center">Login do voluntário</p>     
 | <p align="center">PATCH  </p>     |<p align="center"> `/voluntario/atualizar/:id` </p>        | <p align="center">Atualizar o cadastro do voluntário através do ID</p>
-| <p align="center">DELETE  </p>     |<p align="center"> `/voluntario/deletar/:id` </p>        | <p align="center">Deletar o cadastro do voluntário através do ID </p>
+| <p align="center">DELETE  </p>     |<p align="center"> `/voluntario/deletar` </p>        | <p align="center">Deletar o cadastro do voluntário através do E-mail e SenhaHasheada </p>
 <br>
 
 ➤ Famílias<br>
 | <p align="center">Método HTTP </p>  |<p align="center"> Endpoint    </p>    | <p align="center">Descrição  </p>    |
 | ------------------------ | ---------------------------- | ------------------------------------------ |
 | <p align="center">GET </p>         | <p align="center">`/familia/all`   </p>      | <p align="center">Listar as famílias cadastradas  </p>          |
-| <p align="center">GET  </p>        |<p align="center"> `/familia/buscarResponsavel/:name_do_responsavel_familiar`</p>         | <p align="center">Buscar a família através do nome do responsável familiar </p>          |
+| <p align="center">GET  </p>        |<p align="center"> `/familia/buscarNome/:name_do_responsavel_familiar`</p>         | <p align="center">Buscar a família através do nome do responsável familiar </p>          |
 | <p align="center">GET  </p>        | <p align="center">`/familia/buscarCartao/:numero_cartao_alimentacao`</p>         | <p align="center">Buscar a família através do cartão alimentação</p>          |
-| <p align="center">GET  </p>      | <p align="center">`/familia/perfil`</p>     | <p align="center">Traçar o perfil socioeconômico das famílias </p>  |
+| <p align="center">GET  </p>      | <p align="center">`/familia/perfilEconomico`</p>     | <p align="center">Traçar o perfil econômico das famílias </p>  |
 | <p align="center">POST  </p>        |<p align="center"> `/familia/criar` </p>    | <p align="center">Criar o cadastro da família</p> |
 | <p align="center">PATCH </p>     |<p align="center"> `/familia/atualizar/:numero_cartao_alimentacao`  </p>       | <p align="center">Atualizar o cadastro da família através do cartão alimentação</p>     
 | <p align="center">DELETE  </p>     |<p align="center"> `/familia/deletar/:numero_cartao_alimentacao` </p>        | <p align="center">Deletar o cadastro da família através do cartão alimentação</p>

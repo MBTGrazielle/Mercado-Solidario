@@ -4,21 +4,28 @@ const bcrypt = require("bcrypt");
 const validarItens = require("../utils/servico");
 
 const cadastrarVoluntario = async (request, response) => {
-  const { name, cpf,telefone, email,disponibilidade_dia, disponibilidade_turno } = request.body;
+  const {
+    name,
+    cpf,
+    telefone,
+    email,
+    disponibilidade_dia,
+    disponibilidade_turno,
+  } = request.body;
 
   //Deve retornar(400) ao cadastrar turno noturno
-if(validarItens.naoPermiteTurnoNoturno(request.body)){
-  return response.status(400).json({
-    message: validarItens.naoPermiteTurnoNoturno(request.body),
-  });
-}
+  if (validarItens.naoPermiteTurnoNoturno(request.body)) {
+    return response.status(400).json({
+      message: validarItens.naoPermiteTurnoNoturno(request.body),
+    });
+  }
   const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
   request.body.password = senhaHasheada;
 
   //Deve retornar(400) ao inserir tipo de dado incorreto;
   //e caso não respeite o preenchimento obrigatório.
 
-  if(validarItens.validaTipoEObrigatoriedadeVoluntario(request.body)){
+  if (validarItens.validaTipoEObrigatoriedadeVoluntario(request.body)) {
     return response.status(400).json({
       message: validarItens.validaTipoEObrigatoriedadeVoluntario(request.body),
     });
@@ -31,7 +38,7 @@ if(validarItens.naoPermiteTurnoNoturno(request.body)){
   });
   if (emailExiste) {
     return response.status(409).send({
-      Alerta: "Este endereço de email já está em uso. Tente outro."
+      Alerta: "Este endereço de email já está em uso. Tente outro.",
     });
   }
 
@@ -42,13 +49,13 @@ if(validarItens.naoPermiteTurnoNoturno(request.body)){
   });
   if (cpfExiste) {
     return response.status(409).send({
-      Alerta: "Este CPF já está cadastrado."
+      Alerta: "Este CPF já está cadastrado.",
     });
   }
 
   //Deve retornar(400) caso o CPF não possua 11 caracteres.
 
-  if(validarItens.validaCpfVoluntario(request.body)){
+  if (validarItens.validaCpfVoluntario(request.body)) {
     return response.status(400).json({
       message: validarItens.validaCpfVoluntario(request.body),
     });
@@ -59,7 +66,7 @@ if(validarItens.naoPermiteTurnoNoturno(request.body)){
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
     return response.status(400).send({
-      Alerta: "Email inválido!"
+      Alerta: "Email inválido!",
     });
   }
 
@@ -67,15 +74,16 @@ if(validarItens.naoPermiteTurnoNoturno(request.body)){
     const novoUsuario = new VoluntarioSchema(request.body);
     const salvarUsuario = await novoUsuario.save();
 
-    const usuario={
-    id:salvarUsuario.id,
-    nome:salvarUsuario.name ,
-		cpf:salvarUsuario.cpf ,
-		telefone:salvarUsuario.telefone,
-		email:salvarUsuario.email,
-		disponibilidade_dia:salvarUsuario.disponibilidade_dia,
-		disponibilidade_turno:salvarUsuario.disponibilidade_turno,
-    }
+    const usuario = {
+      id: salvarUsuario.id,
+      nome: salvarUsuario.name,
+      cpf: salvarUsuario.cpf,
+      telefone: salvarUsuario.telefone,
+      email: salvarUsuario.email,
+      password: senhaHasheada,
+      disponibilidade_dia: salvarUsuario.disponibilidade_dia,
+      disponibilidade_turno: salvarUsuario.disponibilidade_turno,
+    };
 
     //Deve retornar(201) quando criar o usuário.
 
@@ -93,19 +101,21 @@ if(validarItens.naoPermiteTurnoNoturno(request.body)){
 const buscarAllVoluntario = async (request, response) => {
   try {
     const voluntarios = await VoluntarioSchema.find();
-   
+
     //Deve retornar(200) caso encontre os voluntários.
 
     if (voluntarios.length > 0) {
       return response.status(200).json({
-        Prezades: `Encontramos ${voluntarios.length} voluntário${voluntarios.length === 1? "": "s"}.`,
+        Prezades: `Encontramos ${voluntarios.length} voluntário${
+          voluntarios.length === 1 ? "" : "s"
+        }.`,
         voluntarios,
       });
 
       //Deve retornar(404) caso não exista voluntário cadastrado.
     } else {
       return response.status(404).json({
-        Prezades: `Nenhum voluntário foi cadastrado até o momento.`
+        Prezades: `Nenhum voluntário foi cadastrado até o momento.`,
       });
     }
   } catch (error) {
@@ -120,7 +130,7 @@ const buscarVoluntarioById = async (request, response) => {
 
   //Deve retornar(400) caso o Id não possua 24 caracteres.
 
-  if(validarItens.validaId(request.params)){
+  if (validarItens.validaId(request.params)) {
     return response.status(400).json({
       message: validarItens.validaId(request.params),
     });
@@ -132,11 +142,9 @@ const buscarVoluntarioById = async (request, response) => {
     //Deve retornar(404) caso o id do voluntário não exista no banco de dados.
 
     if (voluntario.length == 0) {
-      return response
-        .status(404)
-        .json({
-          Prezades: `O voluntário não foi encontrado.`
-        });
+      return response.status(404).json({
+        Prezades: `O voluntário não foi encontrado.`,
+      });
     }
 
     //Deve retornar(200) caso o id do voluntário exista no banco de dados.
@@ -157,7 +165,7 @@ const buscarVoluntarioByCPF = async (request, response) => {
 
   //Deve retornar(400) caso o cpf não possua 11 caracteres.
 
-  if(validarItens.validaCpfVoluntario(request.params)){
+  if (validarItens.validaCpfVoluntario(request.params)) {
     return response.status(400).json({
       message: validarItens.validaCpfVoluntario(request.params),
     });
@@ -169,11 +177,9 @@ const buscarVoluntarioByCPF = async (request, response) => {
     //Deve retornar(404) caso o cpf do voluntário não exista no banco de dados.
 
     if (voluntarioByCPF.length == 0) {
-      return response
-        .status(404)
-        .json({
-          Prezades: `O voluntário não foi encontrado.`
-        });
+      return response.status(404).json({
+        Prezades: `O voluntário não foi encontrado.`,
+      });
     }
 
     //Deve retornar(200) caso o cpf do voluntário exista no banco de dados.
@@ -189,87 +195,24 @@ const buscarVoluntarioByCPF = async (request, response) => {
   }
 };
 
-const filtrarVoluntarioDisponibilidade= async(request,response)=>{
-const {disponibilidade_dia, disponibilidade_turno}=request.body
+const filtrarVoluntarioDisponibilidade = async (request, response) => {
+  const { disponibilidade_dia, disponibilidade_turno } = request.body;
 
-//Deve retornar(400) caso não preencha disponibilidade dia e turno
-if(validarItens.validaPreenchimentoDisponibilidade(request.body)){
-  return response.status(400).json({
-    message: validarItens.validaPreenchimentoDisponibilidade(request.body),
-  });
-}
-
-try {
-  const filtroDia= await VoluntarioSchema.find({disponibilidade_dia})
-  const filtroTurno= await VoluntarioSchema.find({disponibilidade_turno})
-
-response.status(200).send({
-  Prezades:`Segue a lista de voluntários por dia e turno:`,
-  VoluntarioByDia:filtroDia,
-  VoluntarioByTurno:filtroTurno
-})
-} catch (error) {
-  response.status(500).json({
-    message: error.message,
-  });
-}
-}
-
-const atualizarVoluntarioById = async (request, response) => {
-  const { id } = request.params;
-  const { name, telefone,disponibilidade_dia, disponibilidade_turno,password } = request.body;
-  const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
-  if(validarItens.naoPermiteTurnoNoturno(request.body)){
+  //Deve retornar(400) caso não preencha disponibilidade dia e turno
+  if (validarItens.validaPreenchimentoDisponibilidade(request.body)) {
     return response.status(400).json({
-      message: validarItens.naoPermiteTurnoNoturno(request.body),
-    });
-  }
-  //Deve retornar mensagem de erro(400) caso o Id não possua 24 caracteres.
-
-  if(validarItens.validaId(request.params)){
-    return response.status(400).json({
-      message: validarItens.validaId(request.params),
-    });
-  }
-
-  //Deve retornar mensagem de erro(400) ao atualizar o CPF e/ou e-mail.
-
-  if(validarItens.validaPreenchimentoCpfEmail(request.body)){
-    return response.status(400).json({
-      message: validarItens.validaPreenchimentoCpfEmail(request.body),
+      message: validarItens.validaPreenchimentoDisponibilidade(request.body),
     });
   }
 
   try {
-    
-    const voluntarioAtualizado = await VoluntarioSchema.find({ id }).updateOne({
-      name,
-      telefone,
-      disponibilidade_dia, 
-      disponibilidade_turno,
-      password: senhaHasheada
-    });
-
-    const cadastroAtualizado = await VoluntarioSchema.find({ id });
-const usuario={
-    nome:cadastroAtualizado[0].name ,
-		telefone:cadastroAtualizado[0].telefone,
-		disponibilidade_dia:cadastroAtualizado[0].disponibilidade_dia,
-		disponibilidade_turno:cadastroAtualizado[0].disponibilidade_turno,
-}
-    //Deve retornar mensagem de erro(404) caso o id voluntário não exista no banco de dados.
-
-    if (cadastroAtualizado.length == 0) {
-      return response.status(404).json({
-        Prezades: `O voluntário não foi encontrado.`
-      });
-    }
-
-    //Deve retornar(200) caso encontre o paciente por Id.
+    const filtroDia = await VoluntarioSchema.find({ disponibilidade_dia });
+    const filtroTurno = await VoluntarioSchema.find({ disponibilidade_turno });
 
     response.status(200).send({
-      Prezades: "Voluntário atualizado com sucesso",
-     usuario,
+      Prezades: `Segue a lista de voluntários por dia e turno:`,
+      VoluntarioByDia: filtroDia,
+      VoluntarioByTurno: filtroTurno,
     });
   } catch (error) {
     response.status(500).json({
@@ -278,29 +221,92 @@ const usuario={
   }
 };
 
-const deletarVoluntarioById = async (request, response) => {
+const atualizarVoluntarioById = async (request, response) => {
   const { id } = request.params;
+  const {
+    name,
+    telefone,
+    disponibilidade_dia,
+    disponibilidade_turno,
+    email,
+    password,
+  } = request.body;
+  const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
 
-  //Deve retornar(400) caso o Id não possua 24 caracteres.
-  if(validarItens.validaId(request.params)){
+  //Deve retornar(400) ao atualizar turno para noturno
+  if (validarItens.naoPermiteTurnoNoturno(request.body)) {
+    return response.status(400).json({
+      message: validarItens.naoPermiteTurnoNoturno(request.body),
+    });
+  }
+
+  //Deve retornar mensagem de erro(400) caso o Id não possua 24 caracteres.
+  if (validarItens.validaId(request.params)) {
     return response.status(400).json({
       message: validarItens.validaId(request.params),
     });
   }
 
+  //Deve retornar mensagem de erro(400) ao atualizar o CPF.
+  if (validarItens.validaPreenchimentoCpf(request.body)) {
+    return response.status(400).json({
+      message: validarItens.validaPreenchimentoCpf(request.body),
+    });
+  }
+
   try {
-    const voluntarioEncontrado = await VoluntarioSchema.deleteOne({ id });
+    const voluntarioAtualizado = await VoluntarioSchema.find({ id }).updateOne({
+      name,
+      telefone,
+      disponibilidade_dia,
+      disponibilidade_turno,
+      password: senhaHasheada,
+      email:email
+    });
 
-    //Deve retornar status(204) ao deletar e não há conteúdo para enviar para esta solicitação.
+    const cadastroAtualizado = await VoluntarioSchema.find({ id });
+    const usuario = {
+      nome: cadastroAtualizado[0].name,
+      telefone: cadastroAtualizado[0].telefone,
+      disponibilidade_dia: cadastroAtualizado[0].disponibilidade_dia,
+      disponibilidade_turno: cadastroAtualizado[0].disponibilidade_turno,
+      email:cadastroAtualizado[0].email
+    };
 
-    if (voluntarioEncontrado.deletedCount === 1) {
-      return response.status(204).send({ Prezades: `Sem resultado!` });
-    } else {
-      //Deve retornar(404) caso não encontre o id do voluntário.
-
-      return response.status(404).send({
-        Prezades: "O voluntário não foi encontrado."
+    //Deve retornar mensagem de erro(404) caso o id voluntário não exista no banco de dados.
+    if (cadastroAtualizado.length == 0) {
+      return response.status(404).json({
+        Prezades: `O voluntário não foi encontrado.`,
       });
+    }
+
+    //Deve retornar(200) caso encontre o paciente por Id.
+    response.status(200).send({
+      Prezades: "Voluntário atualizado com sucesso",
+      usuario,
+    });
+  } catch (error) {
+    response.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+const deletarVoluntario = async (request, response) => {
+  const { email, password } = request.body;
+  const senhaHasheada=password
+  const voluntarioEmail = await VoluntarioSchema.find({ email });
+  const voluntarioPassword = await VoluntarioSchema.find({ senhaHasheada });
+
+  if (voluntarioEmail.length == 0 || voluntarioPassword.length == 0) {
+    return response.status(400).send({
+      message: "verifique o seu email e/ou password",
+    });
+  }
+  try {
+    const removeVoluntario = await VoluntarioSchema.deleteOne({ email });
+    if (removeVoluntario.deletedCount === 1) {
+      return response.status(204).send({ Prezades: `Sem resultado!` });
     }
   } catch (error) {
     response.status(500).json({
@@ -316,6 +322,5 @@ module.exports = {
   buscarVoluntarioByCPF,
   filtrarVoluntarioDisponibilidade,
   atualizarVoluntarioById,
-  deletarVoluntarioById,
+  deletarVoluntario,
 };
-

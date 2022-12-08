@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const DoacaoSchema = require("../models/DoacaoSchema");
-const bcrypt = require("bcrypt");
 const validarItens = require("../utils/servico");
 
 const cadastrarDoacao = async (request, response) => {
