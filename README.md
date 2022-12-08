@@ -195,7 +195,7 @@ Formulário Voluntariado: (inserir front)
 | <p align="center">POST  </p>        |<p align="center"> `/voluntario/criar` </p>    | <p align="center">Criar o cadastro do voluntário</p> |
 | <p align="center">POST  </p>     |<p align="center"> `/voluntario/login`  </p>       | <p align="center">Login do voluntário</p>     
 | <p align="center">PATCH  </p>     |<p align="center"> `/voluntario/atualizar/:id` </p>        | <p align="center">Atualizar o cadastro do voluntário através do ID</p>
-| <p align="center">DELETE  </p>     |<p align="center"> `/voluntario/deletar` </p>        | <p align="center">Deletar o cadastro do voluntário através do E-mail e SenhaHasheada </p>
+| <p align="center">DELETE  </p>     |<p align="center"> `/voluntario/deletar` </p>        | <p align="center">Deletar o cadastro do voluntário através do E-mail e Senha </p>
 <br>
 
 ➤ Famílias<br>

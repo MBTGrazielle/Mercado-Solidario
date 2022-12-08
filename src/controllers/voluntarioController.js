@@ -293,27 +293,37 @@ const atualizarVoluntarioById = async (request, response) => {
 };
 
 const deletarVoluntario = async (request, response) => {
-  const { email, password } = request.body;
-  const senhaHasheada=password
-  const voluntarioEmail = await VoluntarioSchema.find({ email });
-  const voluntarioPassword = await VoluntarioSchema.find({ senhaHasheada });
-
-  if (voluntarioEmail.length == 0 || voluntarioPassword.length == 0) {
-    return response.status(400).send({
-      message: "verifique o seu email e/ou password",
-    });
-  }
-  try {
-    const removeVoluntario = await VoluntarioSchema.deleteOne({ email });
-    if (removeVoluntario.deletedCount === 1) {
-      return response.status(204).send({ Prezades: `Sem resultado!` });
+  const { email} = request.body;
+    try {
+      VoluntarioSchema.findOne({ email: request.body.email }, (error, user) => {
+        if (!user) {
+          return response.status(404).send({
+            Prezades: "Usuário não encontrado",
+          });
+        }
+    
+        const validPassword = bcrypt.compareSync(
+          request.body.password,
+          user.password
+        );
+        if (!validPassword) {
+          return response.status(401).send({
+            Alerta: "Senha inválida.",
+          });
+        }
+      });
+        
+      const removeVoluntario = await VoluntarioSchema.deleteOne({ email });
+      if (removeVoluntario.deletedCount === 1) {
+        return response.status(204).send({ Prezades: `Sem resultado!` });
+      }
+    } catch (error) {
+      response.status(500).json({
+        message: error.message,
+      });
     }
-  } catch (error) {
-    response.status(500).json({
-      message: error.message,
-    });
-  }
-};
+  };
+  
 
 module.exports = {
   cadastrarVoluntario,

@@ -4,7 +4,7 @@
   "description": "Projeto Final da {reprograma} com tema Segurança Alimentar e Nutricional a todes ",
   "main": "server.js",
   "scripts": {
-    "test": "jest --forceExit --coverage",
+    "test": "jest --watchAll --detectOpenHandles",
     "start": "nodemon server.js",
     "dev": "nodemon server.js"
   },
