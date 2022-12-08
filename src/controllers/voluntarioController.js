@@ -219,7 +219,11 @@ const atualizarVoluntarioById = async (request, response) => {
   const { id } = request.params;
   const { name, telefone,disponibilidade_dia, disponibilidade_turno,password } = request.body;
   const senhaHasheada = bcrypt.hashSync(request.body.password, 10);
- 
+  if(validarItens.naoPermiteTurnoNoturno(request.body)){
+    return response.status(400).json({
+      message: validarItens.naoPermiteTurnoNoturno(request.body),
+    });
+  }
   //Deve retornar mensagem de erro(400) caso o Id não possua 24 caracteres.
 
   if(validarItens.validaId(request.params)){

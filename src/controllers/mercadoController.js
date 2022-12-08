@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const DoacaoSchema = require("../models/DoacaoSchema");
 const bcrypt = require("bcrypt");
 const validarItens = require("../utils/servico");
+const MercadoSchema = require("../models/MercadoSchema");
 
 const buscarAllProdutos=async(request,response)=>{
 }
@@ -48,6 +49,6 @@ const buscarAllProdutos=async(request,response)=>{
   module.exports = {
     buscarAllProdutos,
     filtroMercadoNomeProduto,
-    filtroMercadoCategoria,
+    filtroMercadoCategoria
   };
   

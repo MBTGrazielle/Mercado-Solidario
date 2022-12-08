@@ -112,20 +112,35 @@ Formulário Voluntariado: (inserir front)
 | |
 | |- 📁 controllers
 | |- 📑 authController.js
+| |- 📑 doacaoController.js
+| |- 📑 familiaController.js
+| |- 📑 mercadoController.js
 | |- 📑 voluntarioController.js
 |
 | |- 📁 database
 | |- 📑 mongoConfig.js
+|
 | |- 📁 middlewares
 | |- 📑 auth.js
+|
 | |- 📁 models
+| |- 📑DoacaoSchema.js
+| |- 📑FamiliaSchema.js
 | |- 📑VoluntarioSchema.js
 |
 | |- 📁 routes
+| |- 📑doacaoRoutes.js
+| |- 📑familiaRoutes.js
+| |- 📑mercadoRoutes.js
 | |- 📑voluntarioRoutes.js
+|
 | |- 📁 test
 | |- 📑app.test.js
 | |- 📑jest.setup.js
+|
+| |- 📁 utils
+| |- 📑servico.js
+|
 | |- 📑 app.js
 |
 |- 📑 .env
@@ -208,12 +223,14 @@ Formulário Voluntariado: (inserir front)
 | ------------------------ | ---------------------------- | ------------------------------------------ |
 | <p align="center">GET </p>         | <p align="center">`/mercado/all`   </p>      | <p align="center">Listar o estoque do mercado  </p>          |
 | <p align="center">GET  </p>        |<p align="center"> `/mercado/filtroByNome`</p>         | <p align="center">Buscar o produto através do nome </p>          |
-| <p align="center">POST  </p>        | <p align="center">`/mercado/filtroByCategoria`</p>         | <p align="center">Buscar o produto através da categoria</p>
+| <p align="center">GET </p>        | <p align="center">`/mercado/filtroByCategoria`</p>         | <p align="center">Buscar o produto através da categoria</p>
 <br><br>
 
 ## 🏗️ IMPLEMENTAÇÕES FUTURAS:
 <input type="checkbox"></input>
-Integrar Front-end e Back-end;
+Integrar Front-end e Back-end;<br>
+<input type="checkbox"></input>
+Inserir a compra da família
 <br><br>
 
 ## CONHEÇA UM POUCO SOBRE MIM:
@@ -231,5 +248,5 @@ Integrar Front-end e Back-end;
 <a href="https://www.linkedin.com/in/grazielle-torres-38b96711a/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>   
 <a href="https://github.com/MBTGrazielle" target="_blank"><img src="https://img.shields.io/badge/-Github-%230077B5?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>  
 <a href="https://drive.google.com/drive/folders/1eUxN4ettYnuGDa2CMV6sqGugTNgwcPBM" target="_blank"><img src="https://img.shields.io/badge/-Curriculo-%230077B5?style=for-the-badge&logo=curriculo&logoColor=white" target="_blank"></a>  
-<a href="" target="_blank"><img src="https://img.shields.io/badge/-Portfolio-%230077B5?style=for-the-badge&logo=portfolio&logoColor=white" target="_blank"></a>  
+<a href="https://github.com/MBTGrazielle/Portfolio" target="_blank"><img src="https://img.shields.io/badge/-Portfolio-%230077B5?style=for-the-badge&logo=portfolio&logoColor=white" target="_blank"></a>  
 </div>
