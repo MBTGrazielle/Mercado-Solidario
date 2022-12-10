@@ -1,7 +1,7 @@
 {
   "name": "mercado-solidario",
   "version": "1.0.0",
-  "description": "Projeto Final da {reprograma} com tema Segurança Alimentar e Nutricional a todes ",
+  "description": "Projeto Final da {reprograma} com tema Segurança Alimentar e Nutricional a todes. ",
   "main": "server.js",
   "scripts": {
     "test": "jest --watchAll --detectOpenHandles",

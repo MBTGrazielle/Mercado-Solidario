@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 
 const loadEnv = () => {
   const env = dotenv.config({
-    path: path.resolve(process.env.PWD, ".env"),
+    path: path.resolve(process.env.PWD, ".env.test"),
   });
 
   if (env.error) throw error;

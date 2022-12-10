@@ -144,6 +144,7 @@ Formulário Voluntariado: (inserir front)
 | |- 📑 app.js
 |
 |- 📑 .env
+|- 📑 .env.test
 |- 📑 .env.example
 |- 📑 .gitignore
 |- 📑 package-lock.json

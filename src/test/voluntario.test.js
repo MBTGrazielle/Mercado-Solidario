@@ -26,10 +26,9 @@ describe('Voluntario Controller', () => {
   })
 
   afterAll(async () => {
-    await model.deleteMany() // deletar muitos
+    await model.deleteMany() 
   })
 
-//testa quantos pacientes existem 200 ok
   test('Deve retornar todos os voluntários, status(200)', (done) => {
      request(app)
      .get("/voluntario/all")

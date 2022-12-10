@@ -20,7 +20,7 @@ const cadastrarDoacao = async (request, response) => {
     //Deve retornar(201) quando criar a doação.
 
     response.status(201).send({
-      Bem_vindes: "Doação cadastrada com sucesso",
+      Prezades: "Doação cadastrada com sucesso",
       Cadastro: salvarDoacao,
     });
   } catch (err) {
