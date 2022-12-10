@@ -135,8 +135,11 @@ Formulário Voluntariado: (inserir front)
 | |- 📑voluntarioRoutes.js
 |
 | |- 📁 test
-| |- 📑app.test.js
+| |- 📑doacao.test.js
+| |- 📑familia.test.js
 | |- 📑jest.setup.js
+| |- 📑mercado.test.js
+| |- 📑voluntario.test.js
 |
 | |- 📁 utils
 | |- 📑servico.js
@@ -144,13 +147,14 @@ Formulário Voluntariado: (inserir front)
 | |- 📑 app.js
 |
 |- 📑 .env
-|- 📑 .env.test
 |- 📑 .env.example
+|- 📑 .env.test
 |- 📑 .gitignore
 |- 📑 package-lock.json
 |- 📑 package.json
 |- 📑 README.md
 |- 📑 server.js
+|- 📑 vercel.json
 ```
 <br>
 
