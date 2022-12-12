@@ -254,4 +254,5 @@ Formulário Voluntariado: (inserir front)
 <a href="https://github.com/MBTGrazielle" target="_blank"><img src="https://img.shields.io/badge/-Github-%230077B5?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>  
 <a href="https://drive.google.com/drive/folders/1eUxN4ettYnuGDa2CMV6sqGugTNgwcPBM" target="_blank"><img src="https://img.shields.io/badge/-Curriculo-%230077B5?style=for-the-badge&logo=curriculo&logoColor=white" target="_blank"></a>  
 <a href="https://github.com/MBTGrazielle/Portfolio" target="_blank"><img src="https://img.shields.io/badge/-Portfolio-%230077B5?style=for-the-badge&logo=portfolio&logoColor=white" target="_blank"></a>  
+<a href="https://mercado-solidario-9vjklyc1u-mbtgrazielle.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
 </div>
