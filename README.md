@@ -36,12 +36,12 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 ## 🎯OBJETIVO:
 
-<p align="justify">✘ Inibir a ocorrência da insegurança alimentar e nutricional das famílias cadastradas através da disponibilização do acesso permanente de alimentos; <br> ✘ Inspirar novas ações e estratégias para erradicar a fome;<br> ✘ Ampliar o número de famílias beneficiadas.</p><br>
+<p align="justify">✘ Inibir a ocorrência da insegurança alimentar e nutricional das famílias cadastradas; <br> ✘ Inspirar novas ações e estratégias para erradicar a fome;<br> ✘ Ampliar o número de famílias beneficiadas.</p><br>
 
 
 ## RESUMO DO PROJETO:
 
-<p align="justify">O mercado solidário foi criado para ajudar as famílias que estão vivenciando situação de insegurança alimentar e nutricional, sendo a sua estrutura similar ao mercado convencional. Nesta iniciativa, a família poderá comprar produtos de acordo à sua escolha e necessidade, a partir da utilização de cartão-alimentação com valor máximo de 110 pontos mensais.</p>
+<p align="justify">O mercado solidário foi criado para ajudar as famílias que estão vivenciando situação de insegurança alimentar e nutricional, sendo a sua estrutura similar ao mercado convencional. Nesta iniciativa, a família poderá comprar produtos de acordo à sua escolha e necessidade, a partir da utilização de cartão-alimentação com valor máximo de 125 pontos mensais.</p>
 
 <p align="justify">Os produtos terão pontuações simbólicas e por isso possibilitará a compra equivalente ao dobro de produtos de uma cesta básica. Além do cartão-alimentação, a iniciativa buscará apoio do Centro de Referência de Assistência Social (CRAS), do respectivo município do mercado, para direcionar e ofertar serviços da Assistência Social no SUAS (Sistema Único de Assistência Social) enviando os cadastros das famílias.</p> 
 
@@ -220,7 +220,7 @@ Formulário Voluntariado: (inserir front)
 | ------------------------ | ---------------------------- | ------------------------------------------ |
 | <p align="center">GET </p>         | <p align="center">`/doacao/all`   </p>      | <p align="center">Listar as doações cadastradas  </p>          |
 | <p align="center">GET  </p>        |<p align="center"> `/doacao/buscar/:id`</p>         | <p align="center">Buscar a doação através do ID </p>          |
-| <p align="center">POST  </p>        | <p align="center">`/doacao/criar`</p>         | <p align="center">Criar o cadastro da família</p>          |
+| <p align="center">POST  </p>        | <p align="center">`/doacao/criar`</p>         | <p align="center">Criar o cadastro da doação</p>          |
 <br>
 
 ➤ Mercado<br>
@@ -232,10 +232,10 @@ Formulário Voluntariado: (inserir front)
 <br><br>
 
 ## 🏗️ IMPLEMENTAÇÕES FUTURAS:
-<input type="checkbox"></input>
-Integrar Front-end e Back-end;<br>
-<input type="checkbox"></input>
-Inserir a compra da família
+
+✘ Integrar Front-end e Back-end;<br>
+✘ Fazer responsividade<br>
+✘ Inserir a compra da família
 <br><br>
 
 ## CONHEÇA UM POUCO SOBRE MIM:

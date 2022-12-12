@@ -16,7 +16,6 @@ const login = (request, response) => {
   }
 
   try {
-    
     UserSchema.findOne({ email: request.body.email }, (error, user) => {
       if (!user) {
         return response.status(404).send({
@@ -34,7 +33,7 @@ const login = (request, response) => {
           Alerta: "Senha inválida.",
         });
       }
-      
+
       // jwt.sign(nome do usuário, SEGREDO)
       const token = jwt.sign({ name: user.name }, SECRET);
 
@@ -42,7 +41,6 @@ const login = (request, response) => {
         Prezades: "Login efetuado com sucesso!",
         token,
       });
-
     });
   } catch (err) {
     response.status(500).send({

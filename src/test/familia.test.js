@@ -64,6 +64,43 @@ describe('Familia Controller', () => {
     .end(err => done(err))
   })
 
+  test("Deve retornar status (404), se não encontrar a família pela busca pelo nome do responsável familiar", (done) => {
+    fakeName='Joana'
+    request(app)
+    .get("/familia/buscarNome/" + fakeName)
+    .set("authorization", token)
+    .expect(404)
+    .expect(response=>{
+      expect(response.body.Prezades).toBe(`A familia não foi encontrada.`)})
+    .end(err => done(err))
+  })
+
+  test("Deve retornar status (400), se o cartão alimentação estiver incorreto- caracteres a mais", (done) => {
+    fakeCartao='6391e999bba2beb2d7aed62f7'
+    request(app)
+    .get("/familia/buscarCartao/" + fakeCartao)
+    .set("authorization", token)
+    .expect(400)
+    .expect(response=>{
+      expect(response.body.message).toBe(`Número incorreto. Caracter a mais: ${
+        fakeCartao.length - 24
+      }.`)})
+    .end(err => done(err))
+  })
+
+  test("Deve retornar status (400), se o cartão alimentação estiver incorreto- caracteres a menos", (done) => {
+    fakeCartao='6391e999b'
+    request(app)
+    .get("/familia/buscarCartao/" + fakeCartao)
+    .set("authorization", token)
+    .expect(400)
+    .expect(response=>{
+      expect(response.body.message).toBe(`Número incorreto. Caracter a menos: ${24-
+        fakeCartao.length
+      }.`)})
+    .end(err => done(err))
+  })
+
   test("Deve retornar família, status (200), na busca pelo número do cartão alimentação", (done) => {
     request(app)
     .get("/familia/buscarCartao/" + familiaMock.numero_cartao_alimentacao)
@@ -138,11 +175,40 @@ describe('Familia Controller', () => {
     .end(err => done(err))
   })
 
+  test("Deve retornar status (400) ao tentar atualizar numero do cartão nis", (done) => {
+    const familiaBody = {
+      numero_nis:"7485471596685",
+      numero_integrantes_familia: 3,
+      name_integrantes_familia: ["alane","pricila","Leticia"],
+      name_do_responsavel_familiar:"Grazielle",
+      telefone: "71985741524"
+    }
+    request(app)
+    .patch("/familia/atualizar/" + familiaMock.numero_cartao_alimentacao)
+    .send(familiaBody)
+    .set("authorization", token)
+    .expect(400)
+    .expect(response=>{
+      expect(response.body.message).toBe("Não é possivel atualizar o número do cartão NIS .")})
+    .end(err => done(err))
+  })
+
   test("Deve deletar a família, status (200) ", (done) => {
     request(app)
     .delete("/familia/deletar/"+ familiaMock.numero_cartao_alimentacao)
     .set("authorization", token)
     .expect(204)
+    .end(err => done(err))
+  })
+
+  test("Deve retornar status (404) com cartão incorreto ", (done) => {
+    fakeCartao='6394e4fa93f6c7d814be99d6'
+    request(app)
+    .delete("/familia/deletar/"+ fakeCartao)
+    .set("authorization", token)
+    .expect(404)
+    .expect(response=>{
+      expect(response.body.Prezades).toBe("A família não foi encontrada.")})
     .end(err => done(err))
   })
 
