@@ -15,7 +15,7 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 <p align="justify">O número de pessoas em insegurança alimentar grave no Brasil, ou seja, <b>PASSANDO FOME</b>, quase duplicou em menos de dois anos.</p>
 
-<p align="justify">A insegurança alimentar acontece quando as pessoas não têm acesso regular e permanente a alimentos em quantidade e qualidade suficiente para sua sobrevivência, como define a Organização das Nações Unidas para a Alimentação e a Agricultura (FAO). Isso quer dizer que a pessoa em estado de insegurança alimentar passa por incertezas de quando, como e quanto irá comer em sua próxima refeição, colocando em risco sua nutrição, saúde e bem-estar. </p>
+<p align="justify">A insegurança alimentar acontece quando as pessoas não têm acesso regular e permanente a alimentos em quantidade e qualidade suficiente para sua sobrevivência, como define a Organização das Nações Unidas para a Alimentação e a Agricultura (FAO). Isso quer dizer que a pessoa em estado de insegurança alimentar passa por incertezas de quando, como e quando irá comer em sua próxima refeição, colocando em risco sua nutrição, saúde e bem-estar. </p>
 <p align="justify"> Pesquisa: Vigisan (Inquérito Nacional Sobre Segurança Alimentar no Contexto da Pandemia Covid-19 no Brasil) levantamento pela Rede Brasileira de Pesquisa em Soberania e Segurança Alimentar e Nutricional, divulgada em 08/06/2022, revelou que 15,5% da população estão passando fome. Em 2020, quando foi realizada a primeira pesquisa deste tipo, correspondia a 9,1% da população. </p><br>
 
 <p align="center"><img src="./assets/grafico-justificativa.jpg" alt="grafico-justificativa" width="700" align="center"></img></p><br>
