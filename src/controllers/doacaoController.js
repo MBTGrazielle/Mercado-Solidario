@@ -3,7 +3,7 @@ const DoacaoSchema = require("../models/DoacaoSchema");
 const validarItens = require("../utils/servico");
 
 const cadastrarDoacao = async (request, response) => {
-  const { name_produto, categoria_produto, quantidade_produto } = request.body;
+  const { name_produto, categoria_produto, quantidade_produto, pontos_por_produto } = request.body;
 
   //Deve retornar(400) ao inserir tipo de dado incorreto;
   //e caso não respeite o preenchimento obrigatório.

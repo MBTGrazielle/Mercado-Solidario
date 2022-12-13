@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/logoMercadoSolidario.png" alt="logo mercado Solidario" width="350">
+  <img src="./assets/logoMercado.png" alt="logo mercado Solidario" width="350">
 </p>
 <br>
 
@@ -15,7 +15,7 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 <p align="justify">O número de pessoas em insegurança alimentar grave no Brasil, ou seja, <b>PASSANDO FOME</b>, quase duplicou em menos de dois anos.</p>
 
-<p align="justify">A insegurança alimentar acontece quando as pessoas não têm acesso regular e permanente a alimentos em quantidade e qualidade suficiente para sua sobrevivência, como define a Organização das Nações Unidas para a Alimentação e a Agricultura (FAO). Isso quer dizer que a pessoa em estado de insegurança alimentar passa por incertezas de quando, como e quando irá comer em sua próxima refeição, colocando em risco sua nutrição, saúde e bem-estar. </p>
+<p align="justify">A insegurança alimentar acontece quando as pessoas não têm acesso regular e permanente a alimentos em quantidade e qualidade suficiente para sua sobrevivência, como define a Organização das Nações Unidas para a Alimentação e a Agricultura (FAO). Isso quer dizer que a pessoa em estado de insegurança alimentar passa por incertezas de quando, como e quanto irá comer em sua próxima refeição, colocando em risco sua nutrição, saúde e bem-estar. </p>
 <p align="justify"> Pesquisa: Vigisan (Inquérito Nacional Sobre Segurança Alimentar no Contexto da Pandemia Covid-19 no Brasil) levantamento pela Rede Brasileira de Pesquisa em Soberania e Segurança Alimentar e Nutricional, divulgada em 08/06/2022, revelou que 15,5% da população estão passando fome. Em 2020, quando foi realizada a primeira pesquisa deste tipo, correspondia a 9,1% da população. </p><br>
 
 <p align="center"><img src="./assets/grafico-justificativa.jpg" alt="grafico-justificativa" width="700" align="center"></img></p><br>
@@ -53,14 +53,7 @@ Cartão-Alimentação:
 <p align="center"><img src="./assets/cartao-frente.png" alt="grafico-justificativa" width="400" align="center"></img></p>
 <p align="center"><img src="./assets/cartao-verso.png" alt="grafico-justificativa" width="400" align="center"></img></p><br>
 
-Formulário Voluntariado: (inserir front)
-1. name
-2. cpf
-3. telefone
-4. email
-5. disponibilidade_dia
-6. disponibilidade_turno
-7. password
+<p align="center"><img src="./assets/front.gif" alt="grafico-justificativa" width="1000" align="center"></img></p>
 <br><br>
 
 ## ⚙️FUNCIONALIDADES:
@@ -68,35 +61,53 @@ Formulário Voluntariado: (inserir front)
 ➤ Voluntários<br>
 
 ✘ Cadastramento de voluntários;<br>
+<p align="center"><img src="./assets/criarVoluntario.gif" width="900" ></img></p>
 ✘ Listar os cadastros de todos voluntários da API;<br>
+<p align="center"><img src="./assets/allVoluntarios.gif" width="900"></img></p>
 ✘ Listar os voluntários por filtros (disponibilidade_dia e disponibilidade_turno);<br>
+<p align="center"><img src="./assets/filtroVoluntario.gif" width="900"></img></p>
 ✘ Buscar o voluntário por Id;<br>
+<p align="center"><img src="./assets/voluntarioId.gif" width="900"></img></p>
 ✘ Buscar o voluntário por CPF;<br>
+<p align="center"><img src="./assets/voluntarioCpf.gif" width="900"></img></p>
 ✘ Login do voluntário;<br>
+<p align="center"><img src="./assets/login.gif" width="900"></img></p>
 ✘ Atualizar o cadastro do voluntário;<br>
-✘ Deletar o cadastro do voluntário;<br><br>
+<p align="center"><img src="./assets/voluntarioAtualiza.gif" width="900"></img></p>
+✘ Deletar o cadastro do voluntário;<br>
+<p align="center"><img src="./assets/deletarVoluntario.gif" width="900"></img></p>
 
 ➤ Famílias Beneficiárias<br>
 
 ✘ Cadastrar as famílias;<br>
+<p align="center"><img src="./assets/criarFamilia.gif" width="900"></img></p>
 ✘ Listar os cadastros de todas as famílias da API;<br>
+<p align="center"><img src="./assets/allFamilias.gif" width="900"></img></p>
 ✘ Traçar o perfil socioeconômico<br>
+<p align="center"><img src="./assets/perfilFamilia.gif" width="900"></img></p>
 ✘ Buscar a família por representante familiar;<br>
+<p align="center"><img src="./assets/familiaNome.gif" width="900"></img></p>
 ✘ Buscar a família por número do cartão-alimentação;<br>
+<p align="center"><img src="./assets/familiaCartao.gif" width="900"></img></p>
 ✘ Atualizar o cadastro da família;<br>
-✘ Deletar o cadastro da família;<br><br>
+<p align="center"><img src="./assets/atualizaFamilia.gif" width="900"></img></p>
+✘ Deletar o cadastro da família;<br>
+<p align="center"><img src="./assets/deletarFamilia.gif" width="900"></img></p>
 
 ➤ Doações<br>
 
 ✘ Cadastrar a doação de produtos;<br>
 ✘ Listar o cadastro de todas as doações<br>
 ✘ Buscar a doação por Id;<br><br>
+<p align="center"><img src="./assets/doacao.gif" width="900"></img></p>
 
 
 ➤ Mercado<br>
 
 ✘ Listar estoque da API;<br>
 ✘ Listagem dos produtos por filtros (nome do produto/quantidade e categoria/quantidade);<br>
+<p align="center"><img src="./assets/produto.gif" width="900"></img></p>
+<p align="center"><img src="./assets/categoria.gif" width="900"></img></p>
 <br>
 
 ## 💻MÉTODOS:
@@ -131,6 +142,7 @@ Formulário Voluntariado: (inserir front)
 | |- 📁 routes
 | |- 📑doacaoRoutes.js
 | |- 📑familiaRoutes.js
+| |- 📑indexRoutes.js
 | |- 📑mercadoRoutes.js
 | |- 📑voluntarioRoutes.js
 |
@@ -254,5 +266,5 @@ Formulário Voluntariado: (inserir front)
 <a href="https://github.com/MBTGrazielle" target="_blank"><img src="https://img.shields.io/badge/-Github-%230077B5?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>  
 <a href="https://drive.google.com/drive/folders/1eUxN4ettYnuGDa2CMV6sqGugTNgwcPBM" target="_blank"><img src="https://img.shields.io/badge/-Curriculo-%230077B5?style=for-the-badge&logo=curriculo&logoColor=white" target="_blank"></a>  
 <a href="https://github.com/MBTGrazielle/Portfolio" target="_blank"><img src="https://img.shields.io/badge/-Portfolio-%230077B5?style=for-the-badge&logo=portfolio&logoColor=white" target="_blank"></a>  
-<a href="https://mercado-solidario-9vjklyc1u-mbtgrazielle.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
+<a href="https://mercado-solidario-tfpu9xxdt-mbtgrazielle.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
 </div>

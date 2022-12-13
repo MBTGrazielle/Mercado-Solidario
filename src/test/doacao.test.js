@@ -11,6 +11,7 @@ describe("Familia Controller", () => {
     name_produto: "sabão",
     categoria_produto: "limpeza",
     quantidade_produto: 3,
+    pontos_por_produto:1
   };
 
   beforeAll(async () => {
@@ -99,6 +100,7 @@ describe("Familia Controller", () => {
       name_produto: "sabão",
       categoria_produto: "limpeza",
       quantidade_produto: 3,
+      pontos_por_produto:1
     };
 
     request(app)
@@ -119,6 +121,7 @@ describe("Familia Controller", () => {
       name_produto: 14586635,
       categoria_produto: "",
       quantidade_produto: 3,
+      pontos_por_produto:1
     };
 
     request(app)

@@ -17,6 +17,10 @@ const doacaoSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  pontos_por_produto:{
+    type: Number,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: new Date(),
