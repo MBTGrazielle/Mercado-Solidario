@@ -7,7 +7,7 @@ const { checkAuth } = require("../middlewares/auth");
 
 router.get("/all", checkAuth, doacaoController.buscarAllDoacao);
 router.get("/buscar/:id", checkAuth, doacaoController.buscarDoacaoById);
-router.post("/criar", doacaoController.cadastrarDoacao);
+router.post("/criar", checkAuth, doacaoController.cadastrarDoacao);
 
 
 module.exports = router;

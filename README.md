@@ -105,6 +105,7 @@ Cartão-Alimentação:
 ➤ Mercado<br>
 
 ✘ Listar estoque da API;<br>
+<p align="center"><img src="./assets/estoque.gif" width="900"></img></p>
 ✘ Listagem dos produtos por filtros (nome do produto/quantidade e categoria/quantidade);<br>
 <p align="center"><img src="./assets/produto.gif" width="900"></img></p>
 <p align="center"><img src="./assets/categoria.gif" width="900"></img></p>
@@ -245,6 +246,7 @@ Cartão-Alimentação:
 
 ## 🏗️ IMPLEMENTAÇÕES FUTURAS:
 
+✘ Incrementar a página web
 ✘ Integrar Front-end e Back-end;<br>
 ✘ Fazer responsividade<br>
 ✘ Inserir a compra da família
@@ -266,5 +268,5 @@ Cartão-Alimentação:
 <a href="https://github.com/MBTGrazielle" target="_blank"><img src="https://img.shields.io/badge/-Github-%230077B5?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>  
 <a href="https://drive.google.com/drive/folders/1eUxN4ettYnuGDa2CMV6sqGugTNgwcPBM" target="_blank"><img src="https://img.shields.io/badge/-Curriculo-%230077B5?style=for-the-badge&logo=curriculo&logoColor=white" target="_blank"></a>  
 <a href="https://github.com/MBTGrazielle/Portfolio" target="_blank"><img src="https://img.shields.io/badge/-Portfolio-%230077B5?style=for-the-badge&logo=portfolio&logoColor=white" target="_blank"></a>  
-<a href="https://mercado-solidario-tfpu9xxdt-mbtgrazielle.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
+<a href="https://mercado-solidario-i4rj4lnzg-mbtgrazielle.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
 </div>
