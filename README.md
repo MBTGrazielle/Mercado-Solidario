@@ -42,7 +42,7 @@ Link de acesso: <a href="https://www12.senado.leg.br/noticias/infomaterias/2022/
 
 <p align="justify">Os produtos terão pontuações simbólicas e por isso possibilitará a compra equivalente ao dobro de produtos de uma cesta básica. Além do cartão-alimentação, a iniciativa buscará apoio do Centro de Referência de Assistência Social (CRAS), do respectivo município do mercado, para direcionar e ofertar serviços da Assistência Social no SUAS (Sistema Único de Assistência Social) enviando os cadastros das famílias.</p> 
 
-<p align="justify">O Mercado Solidário contará com doações, em produtos, para abastecimento do estoque e será dividido em 4 bancos com rotas públicas e privadas. O primeiro banco será destinado ao cadastro de voluntários para implementação e manutenção do projeto. O segundo irá cadastrar as famílias beneficiárias à iniciativa, sendo a renda familiar per capita de até 1,5 salário mínimo, o terceiro as doações e o quarto será o mercado e o seu estoque.</p>
+<p align="justify">O Mercado Solidário contará com doações, em produtos, para abastecimento do estoque e será dividido em 5 bancos com rotas públicas e privadas. O primeiro banco será destinado ao cadastro de voluntários para implementação e manutenção do projeto. O segundo irá cadastrar as famílias beneficiárias à iniciativa, sendo a renda familiar per capita de até 1,5 salário mínimo, o terceiro as doações, o quarto será o mercado e o seu estoque e o quinto os produtos.</p>
 
 <br>
 
