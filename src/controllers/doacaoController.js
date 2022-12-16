@@ -1,10 +1,32 @@
 const mongoose = require("mongoose");
+const { updateOne } = require("../models/DoacaoSchema");
 const DoacaoSchema = require("../models/DoacaoSchema");
+const ProdutosSchema = require("../models/ProdutosSchema");
 const validarItens = require("../utils/servico");
 
 const cadastrarDoacao = async (request, response) => {
-  const { name_produto, categoria_produto, quantidade_produto, pontos_por_produto } = request.body;
+  const {
+    name_produto,
+    categoria_produto,
+    quantidade_produto,
+    pontos_por_produto,
+  } = request.body;
 
+  const produtos = await ProdutosSchema.find({ name_produto });
+  let novaQuantidade = quantidade_produto;
+  if (produtos.length > 0) {
+   novaQuantidade = (produtos[0].quantidade_produto += quantidade_produto);
+   const atualizarProduto= await ProdutosSchema.find({name_produto}).updateOne({
+    quantidade_produto:novaQuantidade
+   })
+  } else {
+    const novoProduto = new ProdutosSchema({
+      name_produto,
+      categoria_produto,
+      quantidade_produto,
+    });
+    const salvarProduto = await novoProduto.save();
+  }
   //Deve retornar(400) ao inserir tipo de dado incorreto;
   //e caso não respeite o preenchimento obrigatório.
   if (validarItens.validaTipoEObrigatoriedadeDoacao(request.body)) {
@@ -95,5 +117,5 @@ const buscarDoacaoById = async (request, response) => {
 module.exports = {
   cadastrarDoacao,
   buscarAllDoacao,
-  buscarDoacaoById
+  buscarDoacaoById,
 };
