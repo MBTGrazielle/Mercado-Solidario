@@ -20,9 +20,8 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 <p align="center"><img src="./assets/grafico-justificativa.jpg" alt="grafico-justificativa" width="700" align="center"></img></p><br>
  
-<p>Fonte: Agência Senado</p>
-
-<p>Link de acesso: https://www12.senado.leg.br/noticias/infomaterias/2022/10/retorno-do-brasil-ao-mapa-da-fome-da-onu-preocupa-senadores-e-estudiosos#:~:text=Em%202022%2C%20o%20Segundo%20Inqu%C3%A9rito,brasileiros%20em%20situa%C3%A7%C3%A3o%20de%20fome.</p> 
+Fonte: Agência Senado<br>
+Link de acesso: <a href="https://www12.senado.leg.br/noticias/infomaterias/2022/10/retorno-do-brasil-ao-mapa-da-fome-da-onu-preocupa-senadores-e-estudiosos#:~:text=Em%202022%2C%20o%20Segundo%20Inqu%C3%A9rito,brasileiros%20em%20situa%C3%A7%C3%A3o%20de%20fome.">Clique aqui!</a><br><br>
 
 
 ## PÚBLICO-ALVO:
@@ -51,9 +50,15 @@ Cartão-Alimentação:
 <p align="center"><img src="./assets/cartao-frente.png" alt="grafico-justificativa" width="400" align="center"></img></p>
 <p align="center"><img src="./assets/cartao-verso.png" alt="grafico-justificativa" width="400" align="center"></img></p><br>
 
-Front-end
+Front-end:
 <p align="center"><img src="./assets/front.gif" alt="grafico-justificativa" width="1000" align="center"></img></p>
-<br><br>
+<br>
+
+Link da apresentação:
+<a href="https://www.canva.com/design/DAFU08sWmWw/eLpBVbWKeeudsQbH_UZwyA/view?utm_content=DAFU08sWmWw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Clique aqui!</a><br>
+
+Link do vercel:
+<a href="https://mercado-solidario.vercel.app/">Clique aqui!</a><br><br>
 
 ## ⚙️FUNCIONALIDADES:
 
@@ -251,6 +256,37 @@ Front-end
 ✘ Inserir a compra da família
 <br><br>
 
+## 🛑​ PARA REALIZAR A INSTALAÇÃO NO SEU COMPUTADOR:
+
+
+
+1. Primeiro é necessário clonar o seguinte repositório:
+
+    ```bash
+    $ git clone https://github.com/MBTGrazielle/Mercado-Solidario
+     ```
+
+2. Entre na seguinte pasta: 
+
+    ```bash
+    $ cd Mercado-Solidario/
+    ```
+    
+3. Para prosseguir, é necessário baixas as dependências: 
+
+   ```bash
+    $ npm install
+    ```
+4. Inicie o projeto com o comando: 
+
+   ```bash
+    $ npm run dev
+    ```   
+
+<br>
+
+---
+
 ## CONHEÇA UM POUCO SOBRE MIM:
 
 |||
@@ -267,5 +303,5 @@ Front-end
 <a href="https://github.com/MBTGrazielle" target="_blank"><img src="https://img.shields.io/badge/-Github-%230077B5?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>  
 <a href="https://drive.google.com/drive/folders/1eUxN4ettYnuGDa2CMV6sqGugTNgwcPBM" target="_blank"><img src="https://img.shields.io/badge/-Curriculo-%230077B5?style=for-the-badge&logo=curriculo&logoColor=white" target="_blank"></a>  
 <a href="https://github.com/MBTGrazielle/Portfolio" target="_blank"><img src="https://img.shields.io/badge/-Portfolio-%230077B5?style=for-the-badge&logo=portfolio&logoColor=white" target="_blank"></a>  
-<a href="https://mercado-solidario-i4rj4lnzg-mbtgrazielle.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
+<a href="https://mercado-solidario.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/-Vercel-%230077B5?style=for-the-badge&logo=vercel&logoColor=white" target="_blank"></a>  
 </div>

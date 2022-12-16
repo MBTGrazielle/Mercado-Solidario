@@ -4,11 +4,9 @@ const validarItens = require("../utils/servico");
 
 const buscarAllProdutos = async (request, response) => {
   const mercado=await DoacaoSchema.find()
-  let filtroCategoria=0
+  
   var estoque = mercado.map(function(name_produto) {
-    
   return name_produto.name_produto+`: `+ name_produto.quantidade_produto;
-
 });
 
 return response.status(200).send(estoque)
