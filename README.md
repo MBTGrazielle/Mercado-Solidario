@@ -24,7 +24,6 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 
 <p>Link de acesso: https://www12.senado.leg.br/noticias/infomaterias/2022/10/retorno-do-brasil-ao-mapa-da-fome-da-onu-preocupa-senadores-e-estudiosos#:~:text=Em%202022%2C%20o%20Segundo%20Inqu%C3%A9rito,brasileiros%20em%20situa%C3%A7%C3%A3o%20de%20fome.</p> 
 
-<br>
 
 ## PÚBLICO-ALVO:
 
@@ -37,7 +36,6 @@ Retorno do Brasil ao Mapa da Fome da ONU (2022).
 ## 🎯OBJETIVO:
 
 <p align="justify">✘ Inibir a ocorrência da insegurança alimentar e nutricional das famílias cadastradas; <br> ✘ Inspirar novas ações e estratégias para erradicar a fome;<br> ✘ Ampliar o número de famílias beneficiadas.</p><br>
-
 
 ## RESUMO DO PROJETO:
 
@@ -53,6 +51,7 @@ Cartão-Alimentação:
 <p align="center"><img src="./assets/cartao-frente.png" alt="grafico-justificativa" width="400" align="center"></img></p>
 <p align="center"><img src="./assets/cartao-verso.png" alt="grafico-justificativa" width="400" align="center"></img></p><br>
 
+Front-end
 <p align="center"><img src="./assets/front.gif" alt="grafico-justificativa" width="1000" align="center"></img></p>
 <br><br>
 
@@ -246,7 +245,7 @@ Cartão-Alimentação:
 
 ## 🏗️ IMPLEMENTAÇÕES FUTURAS:
 
-✘ Incrementar a página web
+✘ Incrementar a página web<br>
 ✘ Integrar Front-end e Back-end;<br>
 ✘ Fazer responsividade<br>
 ✘ Inserir a compra da família
