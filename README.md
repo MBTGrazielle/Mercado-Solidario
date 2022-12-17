@@ -142,6 +142,7 @@ Link do vercel:
 | |- 📁 models
 | |- 📑DoacaoSchema.js
 | |- 📑FamiliaSchema.js
+| |- 📑ProdutosSchema.js
 | |- 📑VoluntarioSchema.js
 |
 | |- 📁 routes
